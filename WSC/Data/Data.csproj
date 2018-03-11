@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{72034E13-15B2-4BAC-A03A-483D4FAF540A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataAccessLayer</RootNamespace>
+    <AssemblyName>Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataAccessLayer\Commands\DeleteUserAccessByUsernameCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\DeleteNotificationByNotificationIdCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\DeleteInventoryItemByInventoryItemIdCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\GetCatalogItemByCatalogItemIdCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\GetCatalogItemByManufacturerCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\GetCatalogItemByItemNameCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccessLayer\Commands\GetCatalogItemStockCountCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\GetCustomerByPersonIdCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\GetCustomerByCustomerIdCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\GetCustomerByPersonEmailCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\GetCustomerByFirstNameCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\GetCustomerByPersonLastName.cs" />
+    <Compile Include="DataAccessLayer\Commands\GetCustomerByPhoneCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\GetInventoryItemByCatalogItemIdAndInventoryItemStatusIdCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\GetInventoryItemByInventoryItemIdAndInventoryItemStatusIdCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\GetAddressByPersonIdCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\GetInventoryItemByOrderIdCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\GetInventoryItemByItemNameCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\GetInventoryItemByManufacturerCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\GetInventoryItemByCatalogItemIdCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\GetNotificationByJobRole.cs" />
+    <Compile Include="DataAccessLayer\Commands\GetOrderByInventoryItemIdCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\GetOrderByLastNameCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\GetOrderByOrderStatusIdCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\GetOrdersCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\GetOrderItemByOrderIdCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\GetOrderItemByOrderItemIdCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\GetCustomerByLastNameCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\GetPersonByPersonIdCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\GetInventoryItemByInventoryItemIdCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\GetOrderByOrderIdCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\GetPersonByUserIdCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccessLayer\Commands\GetUserAccessByUserNameCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccessLayer\Commands\GetNotificationByNotificationIdCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\GetNotificationByJobRoleAndIsReadCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\GetUserAccessCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccessLayer\Commands\InsertAddressCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\InsertOrderCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\InsertNotificationCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccessLayer\Commands\InsertInventoryItemCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\InsertCustomerCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\UpdateAddressByAddressIdCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\UpdateNotificationByNotificationId.cs" />
+    <Compile Include="DataAccessLayer\Commands\UpdateInventoryItemByInventoryItemIdCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\UpdateOrderByOrderIdCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\UpdatePersonByPersonIdCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\InsertPersonCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\UpdateUserAccessByUserIdCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\InsertUserAccessCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\ObjectCommand.cs" />
+    <Compile Include="DataAccessLayer\Commands\ObjectConnection.cs" />
+    <Compile Include="DataAccessLayer\DataAccessObjects.cs" />
+    <Compile Include="DataAccessLayer\Entities\CatalogItem.cs" />
+    <Compile Include="DataAccessLayer\Entities\InventoryItem.cs" />
+    <Compile Include="DataAccessLayer\Entities\Address.cs" />
+    <Compile Include="DataAccessLayer\Entities\Notification.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccessLayer\Entities\OrderItem.cs" />
+    <Compile Include="DataAccessLayer\Entities\Customer.cs" />
+    <Compile Include="DataAccessLayer\Entities\Person.cs" />
+    <Compile Include="DataAccessLayer\Entities\Order.cs" />
+    <Compile Include="DataAccessLayer\Entities\UserAccess.cs" />
+    <Compile Include="DataAccessLayer\Extensions\CatalogItemData.cs" />
+    <Compile Include="DataAccessLayer\Extensions\InventoryItemData.cs" />
+    <Compile Include="DataAccessLayer\Extensions\AddressData.cs" />
+    <Compile Include="DataAccessLayer\Extensions\OrderItemData.cs" />
+    <Compile Include="DataAccessLayer\Extensions\CustomerData.cs" />
+    <Compile Include="DataAccessLayer\Extensions\PersonData.cs" />
+    <Compile Include="DataAccessLayer\Extensions\OrderData.cs" />
+    <Compile Include="DataAccessLayer\Extensions\NotificationData.cs" />
+    <Compile Include="DataAccessLayer\Extensions\UserAccessData.cs" />
+    <Compile Include="DataAccessLayer\Readers\AddressSqlDataReader.cs" />
+    <Compile Include="DataAccessLayer\Readers\CatalogItemStockCountSqlDataReader.cs" />
+    <Compile Include="DataAccessLayer\Readers\CatalogItemSqlDataReader.cs" />
+    <Compile Include="DataAccessLayer\Readers\NotificationSqlDataReader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccessLayer\Readers\OrderItemSqlDataReader.cs" />
+    <Compile Include="DataAccessLayer\Readers\OrderSqlDataReader.cs" />
+    <Compile Include="DataAccessLayer\Readers\InventoryItemSqlDataReader.cs" />
+    <Compile Include="DataAccessLayer\Readers\CustomerSqlDataReader.cs" />
+    <Compile Include="DataAccessLayer\Readers\PersonSqlDataReader.cs" />
+    <Compile Include="DataAccessLayer\Readers\UserAccessSqlDataReader.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DataAccessLayer\Readers\ObjectSqlDataReader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\CreateWSCDatabase.sql" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -47,6 +47,7 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -56,6 +57,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -65,6 +67,22 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Business\bin\Debug\Business.dll" />
+    <Content Include="Business\bin\Debug\Business.pdb" />
+    <Content Include="Business\bin\Debug\Data.dll" />
+    <Content Include="Business\bin\Debug\Data.pdb" />
+    <Content Include="Business\Business.csproj" />
+    <Content Include="Business\obj\Debug\Business.csproj.FileListAbsolute.txt" />
+    <Content Include="Business\obj\Debug\Business.dll" />
+    <Content Include="Business\obj\Debug\Business.pdb" />
+    <Content Include="Data\bin\Debug\Data.dll" />
+    <Content Include="Data\bin\Debug\Data.pdb" />
+    <Content Include="Data\Data.csproj" />
+    <Content Include="Data\Data.csproj.user" />
+    <Content Include="Data\obj\Debug\Data.csproj.FileListAbsolute.txt" />
+    <Content Include="Data\obj\Debug\Data.dll" />
+    <Content Include="Data\obj\Debug\Data.pdb" />
+    <Content Include="Data\Scripts\CreateWSCDatabase.sql" />
     <Content Include="packages.config" />
     <Content Include="fonts\bootstrap\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\bootstrap\glyphicons-halflings-regular.ttf" />
@@ -151,12 +169,60 @@
     <Content Include="sass\_bootstrap-compass.scss" />
     <Content Include="sass\_bootstrap-mincer.scss" />
     <Content Include="sass\_bootstrap-sprockets.scss" />
+    <Content Include="webforms\CustomerPage.aspx" />
+    <Content Include="webforms\Login.aspx" />
+    <Content Include="Business\obj\Debug\Business.csprojResolveAssemblyReference.cache" />
+    <Content Include="Business\obj\Debug\CoreCompileInputs.cache" />
+    <Content Include="Business\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="Data\obj\Debug\CoreCompileInputs.cache" />
+    <Content Include="Data\obj\Debug\Data.csprojResolveAssemblyReference.cache" />
+    <Content Include="Data\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="webforms\bin\Debug\Business.dll" />
+    <Content Include="webforms\bin\Debug\Business.pdb" />
+    <Content Include="webforms\bin\Debug\Data.dll" />
+    <Content Include="webforms\bin\Debug\Data.pdb" />
+    <Content Include="webforms\bin\Debug\WSC.exe" />
+    <Content Include="webforms\bin\Debug\WSC.exe.CodeAnalysisLog.xml" />
+    <Content Include="webforms\bin\Debug\WSC.pdb" />
+    <Content Include="webforms\bin\Debug\WSC.vshost.exe" />
+    <Content Include="webforms\Images\WSC_Logo.bmp" />
+    <Content Include="webforms\Images\wsc_logo1.bmp" />
+    <Content Include="webforms\obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
+    <Content Include="webforms\obj\Debug\TempPE\WSCDataSet.Designer.cs.dll" />
+    <Content Include="webforms\obj\Debug\WSC.csproj.FileListAbsolute.txt" />
+    <Content Include="webforms\obj\Debug\WSC.exe" />
+    <Content Include="webforms\obj\Debug\WSC.pdb" />
+    <Content Include="webforms\WSC.csproj" />
+    <Content Include="webforms\WSC.csproj.user" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="webforms\App.config" />
+    <Content Include="webforms\bin\Debug\WSC.exe.config" />
+    <Content Include="webforms\bin\Debug\WSC.exe.lastcodeanalysissucceeded" />
+    <Content Include="webforms\bin\Debug\WSC.vshost.exe.config" />
+    <Content Include="webforms\obj\Debug\CoreCompileInputs.cache" />
+    <Content Include="webforms\obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <Content Include="webforms\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="webforms\obj\Debug\WSC.csproj.GenerateResource.Cache" />
+    <Content Include="webforms\obj\Debug\WSC.csprojResolveAssemblyReference.cache" />
+    <Content Include="webforms\Properties\DataSources\BusinessLayer.Customer.datasource" />
+    <Content Include="webforms\Properties\DataSources\BusinessLayer.Order.datasource" />
+    <None Include="webforms\Properties\Settings.settings" />
+    <Content Include="webforms\WSCDataSet.xsc">
+      <DependentUpon>WSCDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="webforms\WSCDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>WSCDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="webforms\WSCDataSet.xss">
+      <DependentUpon>WSCDataSet.xsd</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\animate.css" />
@@ -198,7 +264,217 @@
     <Content Include="webforms\Home.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Business\BusinessLayer\Address.cs" />
+    <Compile Include="Business\BusinessLayer\BusinessObjects.cs" />
+    <Compile Include="Business\BusinessLayer\CatalogItem.cs" />
+    <Compile Include="Business\BusinessLayer\Customer.cs" />
+    <Compile Include="Business\BusinessLayer\Employee.cs" />
+    <Compile Include="Business\BusinessLayer\InventoryItem.cs" />
+    <Compile Include="Business\BusinessLayer\Notification.cs" />
+    <Compile Include="Business\BusinessLayer\Order.cs" />
+    <Compile Include="Business\BusinessLayer\OrderItem.cs" />
+    <Compile Include="Business\BusinessLayer\PermissionSet.cs" />
+    <Compile Include="Business\BusinessLayer\Person.cs" />
+    <Compile Include="Business\BusinessLayer\UserAccount.cs" />
+    <Compile Include="Business\Enumerations\AddressType.cs" />
+    <Compile Include="Business\Enumerations\InscriptionType.cs" />
+    <Compile Include="Business\Enumerations\InventoryItemStatus.cs" />
+    <Compile Include="Business\Enumerations\InvoiceStatus.cs" />
+    <Compile Include="Business\Enumerations\NotificationType.cs" />
+    <Compile Include="Business\Enumerations\OrderStatus.cs" />
+    <Compile Include="Business\Enumerations\PaymentMethod.cs" />
+    <Compile Include="Business\Enumerations\PaymentType.cs" />
+    <Compile Include="Business\Enumerations\PaymentVerificationStatus.cs" />
+    <Compile Include="Business\Enumerations\Permission.cs" />
+    <Compile Include="Business\Enumerations\PersonType.cs" />
+    <Compile Include="Business\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="Business\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="Business\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Business\Properties\AssemblyInfo.cs" />
+    <Compile Include="Business\Translators\Address.cs" />
+    <Compile Include="Business\Translators\CatalogItem.cs" />
+    <Compile Include="Business\Translators\Customer.cs" />
+    <Compile Include="Business\Translators\InventoryItem.cs" />
+    <Compile Include="Business\Translators\Notification.cs" />
+    <Compile Include="Business\Translators\Order.cs" />
+    <Compile Include="Business\Translators\OrderItem.cs" />
+    <Compile Include="Business\Translators\Person.cs" />
+    <Compile Include="Business\Translators\UserAccount.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\DeleteInventoryItemByInventoryItemIdCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\DeleteNotificationByNotificationIdCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\DeleteUserAccessByUsernameCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetAddressByPersonIdCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetCatalogItemByCatalogItemIdCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetCatalogItemByItemNameCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetCatalogItemByManufacturerCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetCatalogItemStockCountCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetCustomerByCustomerIdCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetCustomerByFirstNameCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetCustomerByLastNameCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetCustomerByPersonEmailCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetCustomerByPersonIdCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetCustomerByPersonLastName.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetCustomerByPhoneCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetInventoryItemByCatalogItemIdAndInventoryItemStatusIdCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetInventoryItemByCatalogItemIdCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetInventoryItemByInventoryItemIdAndInventoryItemStatusIdCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetInventoryItemByInventoryItemIdCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetInventoryItemByItemNameCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetInventoryItemByManufacturerCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetInventoryItemByOrderIdCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetNotificationByJobRole.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetNotificationByJobRoleAndIsReadCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetNotificationByNotificationIdCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetOrderByInventoryItemIdCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetOrderByLastNameCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetOrderByOrderIdCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetOrderByOrderStatusIdCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetOrderItemByOrderIdCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetOrderItemByOrderItemIdCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetOrdersCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetPersonByPersonIdCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetPersonByUserIdCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetUserAccessByUserNameCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\GetUserAccessCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\InsertAddressCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\InsertCustomerCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\InsertInventoryItemCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\InsertNotificationCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\InsertOrderCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\InsertPersonCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\InsertUserAccessCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\ObjectCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\ObjectConnection.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\UpdateAddressByAddressIdCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\UpdateInventoryItemByInventoryItemIdCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\UpdateNotificationByNotificationId.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\UpdateOrderByOrderIdCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\UpdatePersonByPersonIdCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\Commands\UpdateUserAccessByUserIdCommand.cs" />
+    <Compile Include="Data\DataAccessLayer\DataAccessObjects.cs" />
+    <Compile Include="Data\DataAccessLayer\Entities\Address.cs" />
+    <Compile Include="Data\DataAccessLayer\Entities\CatalogItem.cs" />
+    <Compile Include="Data\DataAccessLayer\Entities\Customer.cs" />
+    <Compile Include="Data\DataAccessLayer\Entities\InventoryItem.cs" />
+    <Compile Include="Data\DataAccessLayer\Entities\Notification.cs" />
+    <Compile Include="Data\DataAccessLayer\Entities\Order.cs" />
+    <Compile Include="Data\DataAccessLayer\Entities\OrderItem.cs" />
+    <Compile Include="Data\DataAccessLayer\Entities\Person.cs" />
+    <Compile Include="Data\DataAccessLayer\Entities\UserAccess.cs" />
+    <Compile Include="Data\DataAccessLayer\Extensions\AddressData.cs" />
+    <Compile Include="Data\DataAccessLayer\Extensions\CatalogItemData.cs" />
+    <Compile Include="Data\DataAccessLayer\Extensions\CustomerData.cs" />
+    <Compile Include="Data\DataAccessLayer\Extensions\InventoryItemData.cs" />
+    <Compile Include="Data\DataAccessLayer\Extensions\NotificationData.cs" />
+    <Compile Include="Data\DataAccessLayer\Extensions\OrderData.cs" />
+    <Compile Include="Data\DataAccessLayer\Extensions\OrderItemData.cs" />
+    <Compile Include="Data\DataAccessLayer\Extensions\PersonData.cs" />
+    <Compile Include="Data\DataAccessLayer\Extensions\UserAccessData.cs" />
+    <Compile Include="Data\DataAccessLayer\Readers\AddressSqlDataReader.cs" />
+    <Compile Include="Data\DataAccessLayer\Readers\CatalogItemSqlDataReader.cs" />
+    <Compile Include="Data\DataAccessLayer\Readers\CatalogItemStockCountSqlDataReader.cs" />
+    <Compile Include="Data\DataAccessLayer\Readers\CustomerSqlDataReader.cs" />
+    <Compile Include="Data\DataAccessLayer\Readers\InventoryItemSqlDataReader.cs" />
+    <Compile Include="Data\DataAccessLayer\Readers\NotificationSqlDataReader.cs" />
+    <Compile Include="Data\DataAccessLayer\Readers\ObjectSqlDataReader.cs" />
+    <Compile Include="Data\DataAccessLayer\Readers\OrderItemSqlDataReader.cs" />
+    <Compile Include="Data\DataAccessLayer\Readers\OrderSqlDataReader.cs" />
+    <Compile Include="Data\DataAccessLayer\Readers\PersonSqlDataReader.cs" />
+    <Compile Include="Data\DataAccessLayer\Readers\UserAccessSqlDataReader.cs" />
+    <Compile Include="Data\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="Data\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="Data\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="webforms\CustomerPage.aspx.cs">
+      <DependentUpon>CustomerPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webforms\CustomerPage.aspx.designer.cs">
+      <DependentUpon>CustomerPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webforms\Forms\Checklist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="webforms\Forms\Checklist.Designer.cs">
+      <DependentUpon>Checklist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="webforms\Forms\CustomerInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="webforms\Forms\CustomerInfoForm.Designer.cs">
+      <DependentUpon>CustomerInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="webforms\Forms\DashBoardSelectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="webforms\Forms\DashBoardSelectionForm.Designer.cs">
+      <DependentUpon>DashBoardSelectionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="webforms\Forms\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="webforms\Forms\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="webforms\Forms\managerMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="webforms\Forms\managerMain.Designer.cs">
+      <DependentUpon>managerMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="webforms\Forms\ManageUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="webforms\Forms\ManageUserForm.Designer.cs">
+      <DependentUpon>ManageUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="webforms\Forms\NewCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="webforms\Forms\NewCustomer.Designer.cs">
+      <DependentUpon>NewCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="webforms\Forms\NewUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="webforms\Forms\NewUser.Designer.cs">
+      <DependentUpon>NewUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="webforms\Forms\OrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="webforms\Forms\OrderForm.Designer.cs">
+      <DependentUpon>OrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="webforms\Forms\Orders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="webforms\Forms\Orders.Designer.cs">
+      <DependentUpon>Orders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="webforms\Forms\PasswordChangeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="webforms\Forms\PasswordChangeForm.Designer.cs">
+      <DependentUpon>PasswordChangeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="webforms\Forms\SalesEmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="webforms\Forms\SalesEmployeeForm.Designer.cs">
+      <DependentUpon>SalesEmployeeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="webforms\Forms\StockClerkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="webforms\Forms\StockClerkForm.Designer.cs">
+      <DependentUpon>StockClerkForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="webforms\Forms\WorkSpecialistForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="webforms\Forms\WorkSpecialistForm.Designer.cs">
+      <DependentUpon>WorkSpecialistForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="webforms\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -206,6 +482,91 @@
     <Compile Include="webforms\Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
+    <Compile Include="webforms\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webforms\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webforms\ApplicationLayer\ApplicationObjects.cs" />
+    <Compile Include="webforms\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="webforms\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="webforms\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="webforms\Properties\Resources.Designer.cs" />
+    <Compile Include="webforms\Properties\Settings.Designer.cs" />
+    <Compile Include="webforms\WSCDataSet.Designer.cs" />
+    <Compile Include="webforms\WSCDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WSCDataSet.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="webforms\Forms\Checklist.resx">
+      <DependentUpon>Checklist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="webforms\Forms\CustomerInfoForm.resx">
+      <DependentUpon>CustomerInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="webforms\Forms\DashBoardSelectionForm.resx">
+      <DependentUpon>DashBoardSelectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="webforms\Forms\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="webforms\Forms\managerMain.resx">
+      <DependentUpon>managerMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="webforms\Forms\ManageUserForm.resx">
+      <DependentUpon>ManageUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="webforms\Forms\NewCustomer.resx">
+      <DependentUpon>NewCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="webforms\Forms\NewUser.resx">
+      <DependentUpon>NewUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="webforms\Forms\OrderForm.resx">
+      <DependentUpon>OrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="webforms\Forms\Orders.resx">
+      <DependentUpon>Orders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="webforms\Forms\PasswordChangeForm.resx">
+      <DependentUpon>PasswordChangeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="webforms\Forms\SalesEmployeeForm.resx">
+      <DependentUpon>SalesEmployeeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="webforms\Forms\StockClerkForm.resx">
+      <DependentUpon>StockClerkForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="webforms\Forms\WorkSpecialistForm.resx">
+      <DependentUpon>WorkSpecialistForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="webforms\obj\Debug\WSC.Checklist.resources" />
+    <EmbeddedResource Include="webforms\obj\Debug\WSC.CustomerInfoForm.resources" />
+    <EmbeddedResource Include="webforms\obj\Debug\WSC.DashBoardSelectionForm.resources" />
+    <EmbeddedResource Include="webforms\obj\Debug\WSC.LoginForm.resources" />
+    <EmbeddedResource Include="webforms\obj\Debug\WSC.ManagerMain.resources" />
+    <EmbeddedResource Include="webforms\obj\Debug\WSC.ManageUserForm.resources" />
+    <EmbeddedResource Include="webforms\obj\Debug\WSC.NewCustomer.resources" />
+    <EmbeddedResource Include="webforms\obj\Debug\WSC.NewUser.resources" />
+    <EmbeddedResource Include="webforms\obj\Debug\WSC.OrderForm.resources" />
+    <EmbeddedResource Include="webforms\obj\Debug\WSC.Orders.resources" />
+    <EmbeddedResource Include="webforms\obj\Debug\WSC.PasswordChangeForm.resources" />
+    <EmbeddedResource Include="webforms\obj\Debug\WSC.Properties.Resources.resources" />
+    <EmbeddedResource Include="webforms\obj\Debug\WSC.SalesEmployeeForm.resources" />
+    <EmbeddedResource Include="webforms\obj\Debug\WSC.StockClerkForm.resources" />
+    <EmbeddedResource Include="webforms\obj\Debug\WSC.WorkSpecialistForm.resources" />
+    <EmbeddedResource Include="webforms\Properties\Resources.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Business\obj\Debug\TempPE\" />
+    <Folder Include="Data\obj\Debug\TempPE\" />
+    <Folder Include="Data\Properties\" />
+    <Folder Include="Properties\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

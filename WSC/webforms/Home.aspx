@@ -10,7 +10,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>WSC - The Best Fucking Engraving Company in the world</title>
+	<title>WSC</title>
 
   	<!-- Facebook and Twitter integration -->
 	<meta property="og:title" content=""/>
@@ -66,12 +66,16 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-6 col-xs-6">
-						<div id="gtco-logo"><a href="Home.aspx">WSC - THE BEST FUCKING ENGRAVING COMPANY <em>.</em></a></div>
+						<div id="gtco-logo"><a href="Home.aspx">WSC<em>.</em></a></div>
 					</div>
 					<div class="col-md-6 col-xs-6 social-icons">
+                        <form runat="server">
 						<ul class="gtco-social-top">
-							<li><a href="#"><i>Login</i></a></li>
+							<li><a href="Login.aspx"><i><asp:Label runat="server" ID="LoginLbl">Login</asp:Label></i></a></li>
+                            <li><i><asp:Label runat="server" ID="welcomelbl" Visible="false"></asp:Label></i></></li>
+                            <li><i><asp:Button ID="Logoutbtn" OnClick="Logoutbtn_Click" CssClass="btn btn-primary" runat="server" Text="Logout" Visible="true"/></i></></li>
 						</ul>
+                        </form>
 					</div>
 				</div>
 			</div>	

@@ -11,7 +11,27 @@ namespace WSC.webforms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Logoutbtn.Visible = false;
+            welcomelbl.Visible = false;
+            if (Session["UserInfo"] != null)
+            {
+                System.Collections.Hashtable ht = (System.Collections.Hashtable)Session["UserInfo"];
+                string strUserName = ht.ContainsKey("UserName") ? Convert.ToString(ht["UserName"]) : "";
+                string strRole = ht.ContainsKey("Role") ? Convert.ToString(ht["Role"]) : "";
+                string strFirstName = ht.ContainsKey("FirstName") ? Convert.ToString(ht["FirstName"]) : "";
+                string strLastName = ht.ContainsKey("LastName") ? Convert.ToString(ht["LastName"]) : "";
+                LoginLbl.Visible = false;
+                welcomelbl.Text = "Welcome! " + strUserName;
+                welcomelbl.Visible = true;
+                Logoutbtn.Visible = true;
+                
+            }
+        }
 
+        protected void Logoutbtn_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("Home.aspx");
         }
     }
 }
