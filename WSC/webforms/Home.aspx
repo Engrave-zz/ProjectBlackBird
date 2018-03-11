@@ -70,7 +70,7 @@
 					</div>
 					<div class="col-md-6 col-xs-6 social-icons">
 						<ul class="gtco-social-top">
-							<li><a href="#"><i class="icon-facebook">Login</i></a></li>
+							<li><a href="#"><i>Login</i></a></li>
 						</ul>
 					</div>
 				</div>
