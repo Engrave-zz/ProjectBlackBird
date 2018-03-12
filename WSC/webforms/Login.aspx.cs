@@ -16,16 +16,21 @@ namespace WSC.webforms
         protected UserAccount userAccount;
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Do nothing if user name or password is empty.
-            if ((txtUserName.Text == String.Empty) || (txtUserName.Text == null))
-                return;
-            if ((txtPassword.Text == String.Empty) || (txtPassword.Text == null))
-                return;
+            if(Session["UserInfo"] != null)
+            {
+                Response.Redirect("Home.aspx");
+            }
            
         }
 
         protected void submitBtn_Click(object sender, EventArgs e)
         {
+            //Do nothing if user name or password is empty.
+            if ((txtUserName.Text == String.Empty) || (txtUserName.Text == null))
+                return;
+            if ((txtPassword.Text == String.Empty) || (txtPassword.Text == null))
+                return;
+
             userAccount = ApplicationObjects.AuthenticateUser(txtUserName.Text, txtPassword.Text);
 
             if (userAccount.UserName == "invalid" && userAccount.PasswordHash == "invalid")
