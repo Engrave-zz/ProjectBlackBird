@@ -65,7 +65,9 @@
 					</div>
 					<div class="col-md-6 col-xs-6 social-icons">
 						<ul class="gtco-social-top">
-							<li><a href="Login.aspx"><i><asp:Label runat="server" ID="LoginLbl">Login</asp:Label></i></a></li>
+							<li>
+                                <a href="Login.aspx"><i><asp:Label runat="server" ID="LoginLbl">Login</asp:Label></i></a>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -103,6 +105,7 @@
 		<div class="gtco-container">
 			<div class="row row-mt-15em">
 				<div class="col-md-12 mt-text text-center animate-box" data-animate-effect="fadeInUp">
+                    <h2><strong><asp:Label ID="lblError" CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" runat="server" Visible="false"></asp:Label></strong></h2>
 					<h1><strong>Login</strong></h1>	
 					<h2>Please enter your login information below</h2>
 					<div class="text-center">         
@@ -139,14 +142,9 @@
 								<asp:TextBox runat="server" cssclass="form-control" id="txtAddress" placeholder="Address"> </asp:TextBox>
 								<asp:TextBox runat="server" cssclass="form-control" id="txtCity" placeholder="City"> </asp:TextBox>
 								<asp:TextBox runat="server" cssclass="form-control" id="txtState" placeholder="State"> </asp:TextBox>
+                                <asp:Button runat="server" ID="btnRegister" OnClick="btnRegister_Click" CssClass="btn btn-default btn-block" Text="Register"/>
 							</div>
 						</div>
-                        <div class="col-md-6 col-sm-6">
-                            <asp:label CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" runat="server"><h3>Billing Info</h3></asp:label>
-							<asp:TextBox runat="server" cssclass="form-control" id="txtBillingAddress" placeholder="Billing Address"> </asp:TextBox>
-                            <asp:CheckBox runat="server" AutoPostBack="true" OnCheckedChanged="chckBoxSameAsPersonal_CheckedChanged" ID="chckBoxSameAsPersonal" CssClass="Radial-Selection" Text="Same As Personal Info?" />
-                            <button type="submit" class="btn btn-default btn-block">Register</button>
-                        </div>
 					</form>
 				</div>
 			</div>

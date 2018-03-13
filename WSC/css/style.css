@@ -1642,6 +1642,13 @@ form label {
     padding-right: 15px;
     color: #fff;
 }
+.label-error{
+    font-size: 16px;
+    font-weight: 300;
+    color: red;
+    padding-left: 50px;
+    padding-right: 15px;
+}
 .form-control {
   box-shadow: none;
   background: transparent;

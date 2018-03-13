@@ -20,6 +20,14 @@ namespace WSC.webforms
             {
                 Response.Redirect("Home.aspx");
             }
+            txtFirstName.Text = null;
+            txtLastName.Text = null;
+            txtPassword.Text = null;
+            txtCity.Text = null;
+            txtAddress.Text = null;
+            txtEmail.Text = null;
+            txtEmailConfirm.Text = null;
+            txtUserName.Text = null;
            
         }
 
@@ -79,15 +87,67 @@ namespace WSC.webforms
             Response.Redirect("CustomerPage.aspx");
         }
 
-        protected void chckBoxSameAsPersonal_CheckedChanged(object sender, EventArgs e)
+        protected void btnRegister_Click(object sender, EventArgs e)
         {
-            if(chckBoxSameAsPersonal.Checked)
+            if((txtFirstName.Text == null) || (txtFirstName.Text == String.Empty))
             {
-                txtBillingAddress.Text = txtAddress.Text;
+                if (lblError.Visible == true)
+                {
+                    lblError.Text += "Registration Form Error: Please enter your First Name";
+                }
+                else
+                {
+                    lblError.Visible = true;
+                    lblError.Text = "Registration Form Error: Please enter your First Name";
+                }
             }
-            else
+            if((txtLastName.Text == null) || (txtLastName.Text == String.Empty))
             {
-                txtBillingAddress.Text = null;
+                if(lblError.Visible == true)
+                {
+                    lblError.Text += "\n Registration Form Error: Please enter your Last Name";
+                }
+                else
+                {
+                    lblError.Visible = true;
+                    lblError.Text = "Registration Form Error: Please enter your Last Name";
+                }
+            }
+            if ((txtEmail.Text == null) || (txtEmail.Text == String.Empty))
+            {
+                if (lblError.Visible == true)
+                {
+                    lblError.Text += "\n Registration Form Error: Please enter your email";
+                }
+                else
+                {
+                    lblError.Visible = true;
+                    lblError.Text = "Registration Form Error: Please enter your email";
+                }
+            }
+            if ((txtEmailConfirm.Text == null) || (txtEmailConfirm.Text == String.Empty))
+            {
+                if (lblError.Visible == true)
+                {
+                    lblError.Text += "\n Registration Form Error: Please confirm your email";
+                }
+                else
+                {
+                    lblError.Visible = true;
+                    lblError.Text = "Registration Form Error: Please confirm your email";
+                }
+            }
+            if(txtEmail.Text != txtEmailConfirm.Text)
+            {
+                if (lblError.Visible == true)
+                {
+                    lblError.Text += "\n Registration Form Error: Emails do not match";
+                }
+                else
+                {
+                    lblError.Visible = true;
+                    lblError.Text = "Registration Form Error: Emails do not match";
+                }
             }
         }
     }
