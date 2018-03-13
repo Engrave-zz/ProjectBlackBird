@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="WSC.webforms.Login" %>
+﻿<%@ Page EnableEventValidation="false" Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="WSC.webforms.Login" %>
 
 <!DOCTYPE HTML>
 <html>
@@ -112,21 +112,46 @@
                          </div>
 				</div>
                 <div class="col-md-12 mt-text text-center animate-box" data-animate-effect="fadeInUp">
-					<h1><strong>Register</strong></h1>	
-					<h2>Please fill out the information below to register</h2>
-					<div class="text-center">         
-                  
-                         <asp:TextBox ID="txtEmail" runat="server" placeholder="Email" TextMode="Email"></asp:TextBox>
-                         <asp:TextBox ID="TextBox2" runat="server" placeholder="Password" TextMode="Password"></asp:TextBox>
-                         <asp:Button ID="Button1" OnClick="submitBtn_Click" runat="server" CssClass="btn btn-primary" Text="Submit" />
-                     </div>
-				</div>
-                <div class="col-md-12 mt-text text-center animate-box" data-animate-effect="fadeInUp">
                         <asp:Label ID="txtError" runat="server" Visible="false"></asp:Label>
                 </div>
 			</div>
 		</div>
 	</header>
+
+    <div id="gtco-subscribe">
+		<div class="gtco-container">
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+					<h2>Register</h2>
+					<p>If you're a new customer, fill out the form below to register.</p>
+				</div>
+			</div>
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2">
+					<form class="form-inline">
+						<div class="col-md-6 col-sm-6">
+							<div class="form-group">
+                                <asp:label CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" runat="server"><h3>Personal Info</h3></asp:label>
+								<asp:TextBox runat="server" cssclass="form-control" id="txtFirstName" placeholder="First Name"> </asp:TextBox>
+								<asp:TextBox runat="server" cssclass="form-control" id="txtLastName" placeholder="Last Name"> </asp:TextBox>
+								<asp:TextBox runat="server" cssclass="form-control" id="txtEmail" TextMode="Email" placeholder="Your Email"> </asp:TextBox>
+								<asp:TextBox runat="server" cssclass="form-control" id="txtEmailConfirm" TextMode="Email" placeholder="Confirm Email"> </asp:TextBox>
+								<asp:TextBox runat="server" cssclass="form-control" id="txtAddress" placeholder="Address"> </asp:TextBox>
+								<asp:TextBox runat="server" cssclass="form-control" id="txtCity" placeholder="City"> </asp:TextBox>
+								<asp:TextBox runat="server" cssclass="form-control" id="txtState" placeholder="State"> </asp:TextBox>
+							</div>
+						</div>
+                        <div class="col-md-6 col-sm-6">
+                            <asp:label CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" runat="server"><h3>Billing Info</h3></asp:label>
+							<asp:TextBox runat="server" cssclass="form-control" id="txtBillingAddress" placeholder="Billing Address"> </asp:TextBox>
+                            <asp:CheckBox runat="server" AutoPostBack="true" OnCheckedChanged="chckBoxSameAsPersonal_CheckedChanged" ID="chckBoxSameAsPersonal" CssClass="Radial-Selection" Text="Same As Personal Info?" />
+                            <button type="submit" class="btn btn-default btn-block">Register</button>
+                        </div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<footer id="gtco-footer" role="contentinfo">
 		<div class="gtco-container">

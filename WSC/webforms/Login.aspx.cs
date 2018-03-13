@@ -78,5 +78,17 @@ namespace WSC.webforms
             Session["UserInfo"] = ht;
             Response.Redirect("CustomerPage.aspx");
         }
+
+        protected void chckBoxSameAsPersonal_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chckBoxSameAsPersonal.Checked)
+            {
+                txtBillingAddress.Text = txtAddress.Text;
+            }
+            else
+            {
+                txtBillingAddress.Text = null;
+            }
+        }
     }
 }

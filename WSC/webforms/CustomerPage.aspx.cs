@@ -18,7 +18,6 @@ namespace WSC.webforms
                 string strRole = ht.ContainsKey("Role") ? Convert.ToString(ht["Role"]) : "";
                 string strFirstName = ht.ContainsKey("FirstName") ? Convert.ToString(ht["FirstName"]) : "";
                 string strLastName = ht.ContainsKey("LastName") ? Convert.ToString(ht["LastName"]) : "";
-                test1.Text = strRole;
                 if(!(strRole == "Customer" ))
                 {
                     Session.Clear();

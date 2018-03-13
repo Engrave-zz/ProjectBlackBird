@@ -1634,7 +1634,14 @@ form label {
   visibility: visible;
   opacity: 1;
 }
-
+.Radial-Selection {
+    height: 46px;
+    font-size: 16px;
+    font-weight: 300;
+    padding-left: 40px;
+    padding-right: 15px;
+    color: #fff;
+}
 .form-control {
   box-shadow: none;
   background: transparent;
