@@ -46,7 +46,7 @@ namespace WSC.webforms
             }
             if (userAccount.HighestPermission == null)
             {
-                lblError.Text += "Invalid permissions token. Please contact your manager, Authentication Failed";
+                lblError.Text += "Invalid permissions token. Please contact Help-Desk, Authentication Failed";
                 lblError.Visible = true;
                 return;
             }
