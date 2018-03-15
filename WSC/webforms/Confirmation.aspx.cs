@@ -26,18 +26,15 @@ namespace WSC.webforms
                     Response.Redirect("Login.aspx");
                 }
 
-                lblUserName.Text = "Username: " + strUserName;
-                lblUserCreated.Text = "UserCreated: " + strCustomerCreated;
-                lblWriteBillingAddress.Text = "WriteBillingAddress: " + strWriteBillingAddress;
-                lblWriteMailingAddress.Text = "WriteMailingAddress: " + strWriteMailingAddress;
-                lblWritePersonRecord.Text = "WritePersonRecord:" + strWritePersonRecord;
+                lblConfirm.Text += "Username: " + strUserName;
+                lblConfirm.Text += "\n UserCreated: " + strCustomerCreated;
             }
         }
 
         protected void btnConfirm_Click(object sender, EventArgs e)
         {
             Session.Clear();
-            Response.Redirect("home.aspx");
+            Response.Redirect("login.aspx");
         }
     }
 }

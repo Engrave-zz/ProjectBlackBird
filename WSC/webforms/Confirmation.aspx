@@ -105,18 +105,13 @@
 		<div class="gtco-container">
 			<div class="row row-mt-15em">
 				<div class="col-md-12 mt-text text-center animate-box" data-animate-effect="fadeInUp">
-                    <h2><strong><asp:Label ID="lblError" CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" runat="server" Visible="false"></asp:Label></strong></h2>
-					<h1><strong>Confirmation</strong></h1>	
+                    <h1><strong>Confirmation</strong></h1>	
 					<h2>Please see your confirmation details below, if you see any failures please contact helpdesk. Press confirm to return to Login Page.</h2>
-					<div class="text-center">         
-                        <asp:Label ID="lblUserName" Visible="true" runat="server"></asp:Label>
-                        <asp:Label ID="lblUserCreated" Visible="true" runat="server"></asp:Label>
-                        <asp:Label ID="lblWriteBillingAddress" Visible="true" runat="server"></asp:Label>
-                        <asp:Label ID="lblWriteMailingAddress" Visible="true" runat="server"></asp:Label>
-                        <asp:Label ID="lblWritePersonRecord" Visible="true" runat="server"></asp:Label>
-                        <asp:Button ID="btnConfirm" OnClick="btnConfirm_Click" runat="server" CssClass="btn btn-primary" Text="Confirm" />
-                        </div>
-				</div>
+                    <h2><strong><asp:Label ID="lblConfirm" CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" runat="server" Visible="true"></asp:Label></strong></h2>
+				    <div class="text-center">
+                     <asp:Button ID="btnConfirm" OnClick="btnConfirm_Click" runat="server" CssClass="btn btn-primary" Text="Confirm" />
+				    </div>
+                </div>
                 <div class="col-md-12 mt-text text-center animate-box" data-animate-effect="fadeInUp">
                         <asp:Label ID="txtError" runat="server" Visible="false"></asp:Label>
                 </div>

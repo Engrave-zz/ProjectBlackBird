@@ -143,10 +143,7 @@
 								<asp:TextBox runat="server" cssclass="form-control" id="txtCity" placeholder="City"> </asp:TextBox>
 								<asp:TextBox runat="server" cssclass="form-control" id="txtState" placeholder="State"> </asp:TextBox>
                                 <asp:TextBox runat="server" cssclass="form-control" id="txtZipCode" placeholder="Zip Code"> </asp:TextBox>
-                                <asp:TextBox runat="server" cssclass="form-control" id="txtEmail" TextMode="Email" placeholder="Your Email"> </asp:TextBox>
-								<asp:TextBox runat="server" cssclass="form-control" id="txtEmailConfirm" TextMode="Email" placeholder="Confirm Email"> </asp:TextBox>
-                                <asp:TextBox runat="server" cssclass="form-control" id="txtRegPassword" TextMode="Password" placeholder="Password"> </asp:TextBox>
-								<asp:TextBox runat="server" cssclass="form-control" id="txtRegPasswordConfirm" TextMode="Password" placeholder="Confirm Password"> </asp:TextBox>
+                                <asp:CheckBox ID="chckBoxSameAsMailing" CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" OnCheckedChanged="chckBoxSameAsMailing_CheckedChanged" AutoPostBack="true" runat="server" ForeColor="White" Text="Same as billing?"/>
 							</div>
 						</div>
                         <div class="col-md-6 col-sm-6">
@@ -157,10 +154,18 @@
 								<asp:TextBox runat="server" cssclass="form-control" id="txtBillingCity" placeholder="City"> </asp:TextBox>
 								<asp:TextBox runat="server" cssclass="form-control" id="txtBillingState" placeholder="State"> </asp:TextBox>
                                 <asp:TextBox runat="server" cssclass="form-control" id="txtBillingZipCode" placeholder="Zip Code"> </asp:TextBox>
-                                <asp:CheckBox ID="chckBoxSameAsMailing" CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" OnCheckedChanged="chckBoxSameAsMailing_CheckedChanged" AutoPostBack="true" runat="server" ForeColor="White" Text="Same as personal?"/>
-                                <asp:Button runat="server" ID="Button1" OnClick="btnRegister_Click" CssClass="btn btn-default btn-block" Text="Register"/>
 							</div>
 						</div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                            <asp:label CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" runat="server"><h3>Email & Password</h3></asp:label>
+                                <asp:TextBox runat="server" cssclass="form-control" id="txtEmail" TextMode="Email" placeholder="Your Email"> </asp:TextBox>
+								<asp:TextBox runat="server" cssclass="form-control" id="txtEmailConfirm" TextMode="Email" placeholder="Confirm Email"> </asp:TextBox>
+                                <asp:TextBox runat="server" cssclass="form-control" id="txtRegPassword" TextMode="Password" placeholder="Password"> </asp:TextBox>
+								<asp:TextBox runat="server" cssclass="form-control" id="txtRegPasswordConfirm" TextMode="Password" placeholder="Confirm Password"> </asp:TextBox>
+                                <asp:Button runat="server" ID="Button1" OnClick="btnRegister_Click" CssClass="btn btn-default btn-block" Text="Register"/>
+                            </div>
+                        </div>
 					</form>
 				</div>
 			</div>

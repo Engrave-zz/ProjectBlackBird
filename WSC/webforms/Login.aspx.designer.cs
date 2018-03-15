@@ -139,40 +139,13 @@ namespace WSC.webforms {
         protected global::System.Web.UI.WebControls.TextBox txtZipCode;
         
         /// <summary>
-        /// txtEmail control.
+        /// chckBoxSameAsMailing control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
-        
-        /// <summary>
-        /// txtEmailConfirm control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmailConfirm;
-        
-        /// <summary>
-        /// txtRegPassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRegPassword;
-        
-        /// <summary>
-        /// txtRegPasswordConfirm control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRegPasswordConfirm;
+        protected global::System.Web.UI.WebControls.CheckBox chckBoxSameAsMailing;
         
         /// <summary>
         /// txtBillingAddressStreetNumber control.
@@ -220,13 +193,40 @@ namespace WSC.webforms {
         protected global::System.Web.UI.WebControls.TextBox txtBillingZipCode;
         
         /// <summary>
-        /// chckBoxSameAsMailing control.
+        /// txtEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chckBoxSameAsMailing;
+        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        
+        /// <summary>
+        /// txtEmailConfirm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEmailConfirm;
+        
+        /// <summary>
+        /// txtRegPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRegPassword;
+        
+        /// <summary>
+        /// txtRegPasswordConfirm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRegPasswordConfirm;
         
         /// <summary>
         /// Button1 control.

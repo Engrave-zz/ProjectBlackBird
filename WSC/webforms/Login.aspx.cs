@@ -17,11 +17,11 @@ namespace WSC.webforms
         protected UserAccount userAccount;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["UserInfo"] != null)
+            if (Session["UserInfo"] != null)
             {
                 Response.Redirect("Home.aspx");
             }
-          
+
         }
 
         protected void submitBtn_Click(object sender, EventArgs e)
@@ -87,9 +87,9 @@ namespace WSC.webforms
         protected void btnRegister_Click(object sender, EventArgs e)
         {
             //Call ValidateRegistration Function
-            ValidateRegistration();
+            bool isvailid = ValidateRegistration();
             System.Collections.Hashtable confirmht = new System.Collections.Hashtable();
-            if ((txtError.Visible == false) && (txtError.Text == null))
+            if (isvailid == true)
             {
                 PermissionSet permissionSet = new PermissionSet();
                 permissionSet.IsCustomer = true;
@@ -194,28 +194,27 @@ namespace WSC.webforms
                     confirmht.Add("WriteCustomerRecord", "Success");
                     confirmht.Add("WritePersonRecord", "Success");
                     confirmht.Add("Role", "Customer");
-                    scope.Complete(); 
+                    scope.Complete();
                 }// End transaction
 
+                Session["Confirmation"] = confirmht;
+                Response.Redirect("Confirmation.aspx");
+
+                txtFirstName.Text = null;
+                txtLastName.Text = null;
+                txtCity.Text = null;
+                txtAddressStreetName.Text = null;
+                txtAddressStreetNumber.Text = null;
+                txtEmail.Text = null;
+                txtEmailConfirm.Text = null;
+                txtRegPassword.Text = null;
+                txtRegPasswordConfirm.Text = null;
             }
-
-            Session["Confirmation"] = confirmht;
-            Response.Redirect("Confirmation.aspx");
-
-            txtFirstName.Text = null;
-            txtLastName.Text = null;
-            txtCity.Text = null;
-            txtAddressStreetName.Text = null;
-            txtAddressStreetNumber.Text = null;
-            txtEmail.Text = null;
-            txtEmailConfirm.Text = null;
-            txtRegPassword.Text = null;
-            txtRegPasswordConfirm.Text = null;
         }
 
         protected void chckBoxSameAsMailing_CheckedChanged(object sender, EventArgs e)
         {
-            if(chckBoxSameAsMailing.Checked)
+            if (chckBoxSameAsMailing.Checked)
             {
                 txtBillingAddressStreetName.Text = txtAddressStreetName.Text;
                 txtBillingAddressStreetNumber.Text = txtAddressStreetNumber.Text;
@@ -232,7 +231,8 @@ namespace WSC.webforms
                 txtBillingZipCode.Text = null;
             }
         }
-        protected void ValidateRegistration()
+
+        public bool ValidateRegistration()
         {
             if (lblError.Visible == true)
             {
@@ -243,11 +243,13 @@ namespace WSC.webforms
                 if (lblError.Visible == true)
                 {
                     lblError.Text += "Registration Form Error: Please enter your First Name";
+                    return false;
                 }
                 else
                 {
                     lblError.Visible = true;
                     lblError.Text = "Registration Form Error: Please enter your First Name";
+                    return false;
                 }
             }
             if ((txtLastName.Text == null) || (txtLastName.Text == String.Empty))
@@ -255,11 +257,13 @@ namespace WSC.webforms
                 if (lblError.Visible == true)
                 {
                     lblError.Text += "\n Registration Form Error: Please enter your Last Name";
+                    return false;
                 }
                 else
                 {
                     lblError.Visible = true;
                     lblError.Text = "Registration Form Error: Please enter your Last Name";
+                    return false;
                 }
             }
             if ((txtEmail.Text == null) || (txtEmail.Text == String.Empty))
@@ -267,11 +271,13 @@ namespace WSC.webforms
                 if (lblError.Visible == true)
                 {
                     lblError.Text += "\n Registration Form Error: Please enter your email";
+                    return false;
                 }
                 else
                 {
                     lblError.Visible = true;
                     lblError.Text = "Registration Form Error: Please enter your email";
+                    return false;
                 }
             }
             if ((txtAddressStreetName.Text == null) || (txtAddressStreetName.Text == String.Empty))
@@ -279,11 +285,13 @@ namespace WSC.webforms
                 if (lblError.Visible == true)
                 {
                     lblError.Text += "\n Registration Form Error: Please enter your address street name";
+                    return false;
                 }
                 else
                 {
                     lblError.Visible = true;
                     lblError.Text = "Registration Form Error: Please enter your address streat name";
+                    return false;
                 }
             }
             if ((txtAddressStreetNumber.Text == null) || (txtAddressStreetNumber.Text == String.Empty))
@@ -291,11 +299,13 @@ namespace WSC.webforms
                 if (lblError.Visible == true)
                 {
                     lblError.Text += "\n Registration Form Error: Please enter your address street number";
+                    return false;
                 }
                 else
                 {
                     lblError.Visible = true;
                     lblError.Text = "Registration Form Error: Please enter your address street number";
+                    return false;
                 }
             }
             if ((txtEmailConfirm.Text == null) || (txtEmailConfirm.Text == String.Empty))
@@ -303,11 +313,13 @@ namespace WSC.webforms
                 if (lblError.Visible == true)
                 {
                     lblError.Text += "\n Registration Form Error: Please confirm your email";
+                    return false;
                 }
                 else
                 {
                     lblError.Visible = true;
                     lblError.Text = "Registration Form Error: Please confirm your email";
+                    return false;
                 }
             }
             if (txtEmail.Text != txtEmailConfirm.Text)
@@ -315,11 +327,13 @@ namespace WSC.webforms
                 if (lblError.Visible == true)
                 {
                     lblError.Text += "\n Registration Form Error: Emails do not match";
+                    return false;
                 }
                 else
                 {
                     lblError.Visible = true;
                     lblError.Text = "Registration Form Error: Emails do not match";
+                    return false;
                 }
             }
             if ((txtRegPassword.Text == null) || (txtRegPassword.Text == String.Empty))
@@ -327,11 +341,13 @@ namespace WSC.webforms
                 if (lblError.Visible == true)
                 {
                     lblError.Text += "\n Registration Form Error: Password cannot be blank";
+                    return false;
                 }
                 else
                 {
                     lblError.Visible = true;
                     lblError.Text = "Registration Form Error: Password cannot be blank";
+                    return false;
                 }
             }
             if ((txtRegPasswordConfirm.Text == null) || (txtRegPasswordConfirm.Text == String.Empty))
@@ -339,11 +355,13 @@ namespace WSC.webforms
                 if (lblError.Visible == true)
                 {
                     lblError.Text += "\n Registration Form Error: Please confirm your password";
+                    return false;
                 }
                 else
                 {
                     lblError.Visible = true;
                     lblError.Text = "Registration Form Error: Please confirm your password";
+                    return false;
                 }
             }
             if (txtRegPasswordConfirm.Text != txtRegPassword.Text)
@@ -351,11 +369,13 @@ namespace WSC.webforms
                 if (lblError.Visible == true)
                 {
                     lblError.Text += "\n Registration Form Error: Passwords do not match";
+                    return false;
                 }
                 else
                 {
                     lblError.Visible = true;
                     lblError.Text = "Registration Form Error: Passwords do not match";
+                    return false;
                 }
             }
             if ((txtBillingAddressStreetName.Text == null) || (txtBillingAddressStreetName.Text == String.Empty))
@@ -363,11 +383,13 @@ namespace WSC.webforms
                 if (lblError.Visible == true)
                 {
                     lblError.Text += "\n Registration Form Error: enter billing street name";
+                    return false;
                 }
                 else
                 {
                     lblError.Visible = true;
                     lblError.Text = "Registration Form Error: enter billing street name";
+                    return false;
                 }
             }
             if ((txtBillingAddressStreetNumber.Text == null) || (txtBillingAddressStreetNumber.Text == String.Empty))
@@ -375,11 +397,13 @@ namespace WSC.webforms
                 if (lblError.Visible == true)
                 {
                     lblError.Text += "\n Registration Form Error: enter billing street number";
+                    return false;
                 }
                 else
                 {
                     lblError.Visible = true;
                     lblError.Text = "Registration Form Error: enter billing street number";
+                    return false;
                 }
             }
             if ((txtBillingCity.Text == null) || (txtBillingCity.Text == String.Empty))
@@ -387,11 +411,13 @@ namespace WSC.webforms
                 if (lblError.Visible == true)
                 {
                     lblError.Text += "\n Registration Form Error: enter billing city";
+                    return false;
                 }
                 else
                 {
                     lblError.Visible = true;
                     lblError.Text = "Registration Form Error: enter billing city";
+                    return false;
                 }
             }
             if ((txtBillingState.Text == null) || (txtBillingState.Text == String.Empty))
@@ -399,11 +425,13 @@ namespace WSC.webforms
                 if (lblError.Visible == true)
                 {
                     lblError.Text += "\n Registration Form Error: enter billing state";
+                    return false;
                 }
                 else
                 {
                     lblError.Visible = true;
                     lblError.Text = "Registration Form Error: enter billing state";
+                    return false;
                 }
             }
             if ((txtBillingZipCode.Text == null) || (txtBillingZipCode.Text == String.Empty))
@@ -411,13 +439,16 @@ namespace WSC.webforms
                 if (lblError.Visible == true)
                 {
                     lblError.Text += "\n Registration Form Error: enter billing Zip Code";
+                    return false;
                 }
                 else
                 {
                     lblError.Visible = true;
                     lblError.Text = "Registration Form Error: enter billing Zip Code";
+                    return false;
                 }
             }
+            return true;
         }
     }
 }
