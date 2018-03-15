@@ -11,6 +11,9 @@ namespace WSC.webforms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+            Logoutbtn.Visible = false;
+            welcomelbl.Visible = false;
             if (Session["UserInfo"] != null)
             {
                 System.Collections.Hashtable ht = (System.Collections.Hashtable)Session["UserInfo"];
@@ -18,6 +21,9 @@ namespace WSC.webforms
                 string strRole = ht.ContainsKey("Role") ? Convert.ToString(ht["Role"]) : "";
                 string strFirstName = ht.ContainsKey("FirstName") ? Convert.ToString(ht["FirstName"]) : "";
                 string strLastName = ht.ContainsKey("LastName") ? Convert.ToString(ht["LastName"]) : "";
+                welcomelbl.Text = "Welcome! " + strUserName;
+                welcomelbl.Visible = true;
+                Logoutbtn.Visible = true;
                 if (!(strRole == "Customer" ))
                 {
                     Session.Clear();
@@ -25,6 +31,11 @@ namespace WSC.webforms
                 }
             }
 
+        }
+        protected void Logoutbtn_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("Home.aspx");
         }
     }
 }

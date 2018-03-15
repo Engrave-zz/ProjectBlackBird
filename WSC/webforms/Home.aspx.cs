@@ -15,6 +15,7 @@ namespace WSC.webforms
             welcomelbl.Visible = false;
             if (Session["UserInfo"] != null)
             {
+                btnCustomerArea.Visible = true;
                 System.Collections.Hashtable ht = (System.Collections.Hashtable)Session["UserInfo"];
                 string strUserName = ht.ContainsKey("UserName") ? Convert.ToString(ht["UserName"]) : "";
                 string strRole = ht.ContainsKey("Role") ? Convert.ToString(ht["Role"]) : "";
@@ -32,6 +33,10 @@ namespace WSC.webforms
         {
             Session.Clear();
             Response.Redirect("Home.aspx");
+        }
+        protected void btnCustomerArea_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("CustomerPage.aspx");
         }
     }
 }

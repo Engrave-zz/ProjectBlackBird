@@ -53,6 +53,7 @@
 
 	</head>
 	<body>
+    <form runat="server">
 		
 	<div class="gtco-loader"></div>
 	
@@ -69,13 +70,11 @@
 						<div id="gtco-logo"><a href="Home.aspx">WSC<em>.</em></a></div>
 					</div>
 					<div class="col-md-6 col-xs-6 social-icons">
-                        <form runat="server">
 						<ul class="gtco-social-top">
 							<li><a href="Login.aspx"><i><asp:Label runat="server" ID="LoginLbl">Login</asp:Label></i></a></li>
                             <li><i><asp:Label runat="server" ID="welcomelbl" Visible="false"></asp:Label></i></></li>
                             <li><i><asp:Button ID="Logoutbtn" OnClick="Logoutbtn_Click" CssClass="btn btn-primary" runat="server" Text="Logout" Visible="true"/></i></></li>
 						</ul>
-                        </form>
 					</div>
 				</div>
 			</div>	
@@ -99,6 +98,7 @@
 							<li><a href="portfolio.html">Portfolio</a></li>
 							<li><a href="blog.html">Blog</a></li>
 							<li><a href="contact.html">Contact</a></li>
+                            <li><asp:Button ID="btnCustomerArea" OnClick="btnCustomerArea_Click" CssClass="btn btn-primary" runat="server" Text="Customer Area" Visible="false"/></li>
 						</ul>
 					</div>
 				</div>
@@ -495,7 +495,7 @@
 	
 	<!-- Main -->
 	<script src="../js/main.js"></script>
-
+    </form>
 	</body>
 </html>
 
