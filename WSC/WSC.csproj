@@ -169,6 +169,7 @@
     <Content Include="sass\_bootstrap-compass.scss" />
     <Content Include="sass\_bootstrap-mincer.scss" />
     <Content Include="sass\_bootstrap-sprockets.scss" />
+    <Content Include="webforms\Confirmation.aspx" />
     <Content Include="webforms\CustomerPage.aspx" />
     <Content Include="webforms\Login.aspx" />
     <Content Include="Business\obj\Debug\Business.csprojResolveAssemblyReference.cache" />
@@ -384,96 +385,19 @@
     <Compile Include="Data\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="Data\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="Data\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="webforms\Confirmation.aspx.cs">
+      <DependentUpon>Confirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webforms\Confirmation.aspx.designer.cs">
+      <DependentUpon>Confirmation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="webforms\CustomerPage.aspx.cs">
       <DependentUpon>CustomerPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="webforms\CustomerPage.aspx.designer.cs">
       <DependentUpon>CustomerPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webforms\Forms\Checklist.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="webforms\Forms\Checklist.Designer.cs">
-      <DependentUpon>Checklist.cs</DependentUpon>
-    </Compile>
-    <Compile Include="webforms\Forms\CustomerInfoForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="webforms\Forms\CustomerInfoForm.Designer.cs">
-      <DependentUpon>CustomerInfoForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="webforms\Forms\DashBoardSelectionForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="webforms\Forms\DashBoardSelectionForm.Designer.cs">
-      <DependentUpon>DashBoardSelectionForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="webforms\Forms\LoginForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="webforms\Forms\LoginForm.Designer.cs">
-      <DependentUpon>LoginForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="webforms\Forms\managerMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="webforms\Forms\managerMain.Designer.cs">
-      <DependentUpon>managerMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="webforms\Forms\ManageUserForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="webforms\Forms\ManageUserForm.Designer.cs">
-      <DependentUpon>ManageUserForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="webforms\Forms\NewCustomer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="webforms\Forms\NewCustomer.Designer.cs">
-      <DependentUpon>NewCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="webforms\Forms\NewUser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="webforms\Forms\NewUser.Designer.cs">
-      <DependentUpon>NewUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="webforms\Forms\OrderForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="webforms\Forms\OrderForm.Designer.cs">
-      <DependentUpon>OrderForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="webforms\Forms\Orders.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="webforms\Forms\Orders.Designer.cs">
-      <DependentUpon>Orders.cs</DependentUpon>
-    </Compile>
-    <Compile Include="webforms\Forms\PasswordChangeForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="webforms\Forms\PasswordChangeForm.Designer.cs">
-      <DependentUpon>PasswordChangeForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="webforms\Forms\SalesEmployeeForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="webforms\Forms\SalesEmployeeForm.Designer.cs">
-      <DependentUpon>SalesEmployeeForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="webforms\Forms\StockClerkForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="webforms\Forms\StockClerkForm.Designer.cs">
-      <DependentUpon>StockClerkForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="webforms\Forms\WorkSpecialistForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="webforms\Forms\WorkSpecialistForm.Designer.cs">
-      <DependentUpon>WorkSpecialistForm.cs</DependentUpon>
     </Compile>
     <Compile Include="webforms\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
@@ -503,48 +427,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="webforms\Forms\Checklist.resx">
-      <DependentUpon>Checklist.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="webforms\Forms\CustomerInfoForm.resx">
-      <DependentUpon>CustomerInfoForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="webforms\Forms\DashBoardSelectionForm.resx">
-      <DependentUpon>DashBoardSelectionForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="webforms\Forms\LoginForm.resx">
-      <DependentUpon>LoginForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="webforms\Forms\managerMain.resx">
-      <DependentUpon>managerMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="webforms\Forms\ManageUserForm.resx">
-      <DependentUpon>ManageUserForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="webforms\Forms\NewCustomer.resx">
-      <DependentUpon>NewCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="webforms\Forms\NewUser.resx">
-      <DependentUpon>NewUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="webforms\Forms\OrderForm.resx">
-      <DependentUpon>OrderForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="webforms\Forms\Orders.resx">
-      <DependentUpon>Orders.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="webforms\Forms\PasswordChangeForm.resx">
-      <DependentUpon>PasswordChangeForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="webforms\Forms\SalesEmployeeForm.resx">
-      <DependentUpon>SalesEmployeeForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="webforms\Forms\StockClerkForm.resx">
-      <DependentUpon>StockClerkForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="webforms\Forms\WorkSpecialistForm.resx">
-      <DependentUpon>WorkSpecialistForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="webforms\obj\Debug\WSC.Checklist.resources" />
     <EmbeddedResource Include="webforms\obj\Debug\WSC.CustomerInfoForm.resources" />
     <EmbeddedResource Include="webforms\obj\Debug\WSC.DashBoardSelectionForm.resources" />

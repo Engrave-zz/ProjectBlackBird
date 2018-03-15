@@ -41,12 +41,12 @@ namespace WSC
                 switch (item.ToString())
                 {
                     case "Operational Manager":
-                        permissionSet.IsOperationsManager = true;
+                        permissionSet.IsManager = true;
                         permissionSet.IsStockClerk = true;
-                        permissionSet.IsSalesPerson = true;
+                        permissionSet.IsCustomer = true;
                         permissionSet.IsWorkSpecialist = true;
                         break;
-                    case "Sales Person": permissionSet.IsSalesPerson = true;
+                    case "Sales Person": permissionSet.IsCustomer = true;
                         break;
                     case "Printing / Engraving Specialist": permissionSet.IsWorkSpecialist = true;
                         break;

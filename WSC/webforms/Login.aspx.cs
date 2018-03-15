@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Transactions;
 
 namespace WSC.webforms
 {
@@ -20,19 +21,15 @@ namespace WSC.webforms
             {
                 Response.Redirect("Home.aspx");
             }
-            txtFirstName.Text = null;
-            txtLastName.Text = null;
-            txtPassword.Text = null;
-            txtCity.Text = null;
-            txtAddress.Text = null;
-            txtEmail.Text = null;
-            txtEmailConfirm.Text = null;
-            txtUserName.Text = null;
-           
+          
         }
 
         protected void submitBtn_Click(object sender, EventArgs e)
         {
+            if (lblError.Visible == true)
+            {
+                lblError.Text = null;
+            }
             //Do nothing if user name or password is empty.
             if ((txtUserName.Text == String.Empty) || (txtUserName.Text == null))
                 return;
@@ -43,14 +40,14 @@ namespace WSC.webforms
 
             if (userAccount.UserName == "invalid" && userAccount.PasswordHash == "invalid")
             {
-                txtError.Text = "Failed to authenticate with inputted username and password, Authentication Failed";
-                txtError.Visible = true;
+                lblError.Text += "Failed to authenticate with inputted username and password, Authentication Failed";
+                lblError.Visible = true;
                 return;
             }
             if (userAccount.HighestPermission == null)
             {
-                txtError.Text = "Invalid permissions token. Please contact your manager, Authentication Failed";
-                txtError.Visible = true;
+                lblError.Text += "Invalid permissions token. Please contact your manager, Authentication Failed";
+                lblError.Visible = true;
                 return;
             }
 
@@ -59,10 +56,10 @@ namespace WSC.webforms
 
             switch (userAccount.HighestPermission)
             {
-                case (Permission.OperationsManager):
+                case (Permission.Manager):
                     ShowManagerMainForm(userAccount);
                     break;
-                case (Permission.SalesPerson):
+                case (Permission.Customer):
                     ShowCustomerPage(userAccount);
                     break;
             }
@@ -89,7 +86,159 @@ namespace WSC.webforms
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            if((txtFirstName.Text == null) || (txtFirstName.Text == String.Empty))
+            //Call ValidateRegistration Function
+            ValidateRegistration();
+            System.Collections.Hashtable confirmht = new System.Collections.Hashtable();
+            if ((txtError.Visible == false) && (txtError.Text == null))
+            {
+                PermissionSet permissionSet = new PermissionSet();
+                permissionSet.IsCustomer = true;
+                //add code here to register user.
+                string regUserName = txtFirstName.Text.Substring(0, 1) + txtLastName.Text;
+                UserAccount newUser = new UserAccount(regUserName, txtRegPassword.Text, false);
+                newUser.EmailAddress = txtEmail.Text;
+                newUser.FirstName = txtFirstName.Text;
+                newUser.LastName = txtLastName.Text;
+                newUser.PhoneNumber = txtPhoneNumber.Text;
+                newUser.PermissionSet = permissionSet;
+
+                int returnUserValue = ApplicationObjects.NewUser(newUser);
+                //Display Status Upon Success
+                confirmht.Add("UserName", newUser.UserName);
+                if (returnUserValue == 1)
+                {
+                    return;
+                }
+                else if (returnUserValue == 2)
+                {
+                    lblError.Visible = true;
+                    lblError.Text = "A user by this name already exists, duplicate user";
+                    return;
+                }
+
+                // Populate customer object with user input
+                Customer customer = new Customer();
+                customer.FirstName = txtFirstName.Text;
+                customer.LastName = txtLastName.Text;
+                customer.PhoneNumber = txtPhoneNumber.Text;
+                customer.EmailAddress = txtEmail.Text;
+
+                // Populate mailing address object with user input
+                Address mailingAddress = new Address();
+                mailingAddress.PersonId = customer.PersonId;
+                mailingAddress.StreetNumber = int.Parse(txtAddressStreetNumber.Text);
+                mailingAddress.StreetName = txtAddressStreetName.Text;
+                mailingAddress.AddressCity = txtCity.Text;
+                mailingAddress.AddressState = txtState.Text;
+                mailingAddress.AddressZip = txtZipCode.Text;
+                mailingAddress.AddressType = AddressType.Mailing;
+
+                // Populate billing address object with user input
+                Address billingAddress = new Address();
+                billingAddress.PersonId = customer.PersonId;
+                billingAddress.StreetNumber = int.Parse(txtBillingAddressStreetNumber.Text);
+                billingAddress.StreetName = txtBillingAddressStreetName.Text;
+                billingAddress.AddressCity = txtBillingCity.Text;
+                billingAddress.AddressState = txtBillingState.Text;
+                billingAddress.AddressZip = txtBillingZipCode.Text;
+                billingAddress.AddressType = AddressType.Billing;
+
+                // Transaction to perform 4 inter-related data inserts on multiple database tables
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    int returnValue = 1;
+
+                    // Write PERSON record to database
+                    BusinessObjects _personBusinessObject = new BusinessObjects();
+                    returnValue = _personBusinessObject.InsertPersonFromCustomer(customer);
+                    if (returnValue == 1)
+                    {   // If insert fails, rollback transaction & display error message
+                        confirmht.Add("WritePersonRecord", "Failed");
+                        scope.Dispose();
+                        return;
+                    }
+
+                    // Write CUSTOMER record to database
+                    BusinessObjects _customerBusinessObject = new BusinessObjects();
+                    returnValue = _customerBusinessObject.InsertCustomer(customer);
+                    if (returnValue == 1)
+                    {   // If insert fails, rollback transaction & display error message
+                        confirmht.Add("WriteCustomerRecord", "Failed");
+                        scope.Dispose();
+                        return;
+                    }
+
+                    // Write MAILING ADDRESS record to database
+                    BusinessObjects _mailingAddressBusinessObject = new BusinessObjects();
+                    returnValue = _mailingAddressBusinessObject.InsertAddress(mailingAddress);
+                    if (returnValue == 1)
+                    {   // If insert fails, rollback transaction & display error message
+                        confirmht.Add("WriteMailingAddress", "Failed");
+                        scope.Dispose();
+                        return;
+                    }
+
+                    // Write BILLING ADDRESS record to database
+                    BusinessObjects _billingAddressBusinessObject = new BusinessObjects();
+                    returnValue = _billingAddressBusinessObject.InsertAddress(billingAddress);
+                    if (returnValue == 1)
+                    {   // If insert fails, rollback transaction & display error message
+                        confirmht.Add("WriteBillingAddress", "Failed");
+                        scope.Dispose();
+                        return;
+                    }
+                    // Committ data transaction & display success message
+                    confirmht.Add("CustomerCreated", "Success");
+                    confirmht.Add("WriteBillingAddress", "Success");
+                    confirmht.Add("WriteMailingAddress", "Success");
+                    confirmht.Add("WriteCustomerRecord", "Success");
+                    confirmht.Add("WritePersonRecord", "Success");
+                    confirmht.Add("Role", "Customer");
+                    scope.Complete(); 
+                }// End transaction
+
+            }
+
+            Session["Confirmation"] = confirmht;
+            Response.Redirect("Confirmation.aspx");
+
+            txtFirstName.Text = null;
+            txtLastName.Text = null;
+            txtCity.Text = null;
+            txtAddressStreetName.Text = null;
+            txtAddressStreetNumber.Text = null;
+            txtEmail.Text = null;
+            txtEmailConfirm.Text = null;
+            txtRegPassword.Text = null;
+            txtRegPasswordConfirm.Text = null;
+        }
+
+        protected void chckBoxSameAsMailing_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chckBoxSameAsMailing.Checked)
+            {
+                txtBillingAddressStreetName.Text = txtAddressStreetName.Text;
+                txtBillingAddressStreetNumber.Text = txtAddressStreetNumber.Text;
+                txtBillingCity.Text = txtCity.Text;
+                txtBillingState.Text = txtState.Text;
+                txtBillingZipCode.Text = txtZipCode.Text;
+            }
+            else
+            {
+                txtBillingAddressStreetName.Text = null;
+                txtBillingAddressStreetNumber.Text = null;
+                txtBillingCity.Text = null;
+                txtBillingState.Text = null;
+                txtBillingZipCode.Text = null;
+            }
+        }
+        protected void ValidateRegistration()
+        {
+            if (lblError.Visible == true)
+            {
+                lblError.Text = null;
+            }
+            if ((txtFirstName.Text == null) || (txtFirstName.Text == String.Empty))
             {
                 if (lblError.Visible == true)
                 {
@@ -101,9 +250,9 @@ namespace WSC.webforms
                     lblError.Text = "Registration Form Error: Please enter your First Name";
                 }
             }
-            if((txtLastName.Text == null) || (txtLastName.Text == String.Empty))
+            if ((txtLastName.Text == null) || (txtLastName.Text == String.Empty))
             {
-                if(lblError.Visible == true)
+                if (lblError.Visible == true)
                 {
                     lblError.Text += "\n Registration Form Error: Please enter your Last Name";
                 }
@@ -125,6 +274,30 @@ namespace WSC.webforms
                     lblError.Text = "Registration Form Error: Please enter your email";
                 }
             }
+            if ((txtAddressStreetName.Text == null) || (txtAddressStreetName.Text == String.Empty))
+            {
+                if (lblError.Visible == true)
+                {
+                    lblError.Text += "\n Registration Form Error: Please enter your address street name";
+                }
+                else
+                {
+                    lblError.Visible = true;
+                    lblError.Text = "Registration Form Error: Please enter your address streat name";
+                }
+            }
+            if ((txtAddressStreetNumber.Text == null) || (txtAddressStreetNumber.Text == String.Empty))
+            {
+                if (lblError.Visible == true)
+                {
+                    lblError.Text += "\n Registration Form Error: Please enter your address street number";
+                }
+                else
+                {
+                    lblError.Visible = true;
+                    lblError.Text = "Registration Form Error: Please enter your address street number";
+                }
+            }
             if ((txtEmailConfirm.Text == null) || (txtEmailConfirm.Text == String.Empty))
             {
                 if (lblError.Visible == true)
@@ -137,7 +310,7 @@ namespace WSC.webforms
                     lblError.Text = "Registration Form Error: Please confirm your email";
                 }
             }
-            if(txtEmail.Text != txtEmailConfirm.Text)
+            if (txtEmail.Text != txtEmailConfirm.Text)
             {
                 if (lblError.Visible == true)
                 {
@@ -147,6 +320,102 @@ namespace WSC.webforms
                 {
                     lblError.Visible = true;
                     lblError.Text = "Registration Form Error: Emails do not match";
+                }
+            }
+            if ((txtRegPassword.Text == null) || (txtRegPassword.Text == String.Empty))
+            {
+                if (lblError.Visible == true)
+                {
+                    lblError.Text += "\n Registration Form Error: Password cannot be blank";
+                }
+                else
+                {
+                    lblError.Visible = true;
+                    lblError.Text = "Registration Form Error: Password cannot be blank";
+                }
+            }
+            if ((txtRegPasswordConfirm.Text == null) || (txtRegPasswordConfirm.Text == String.Empty))
+            {
+                if (lblError.Visible == true)
+                {
+                    lblError.Text += "\n Registration Form Error: Please confirm your password";
+                }
+                else
+                {
+                    lblError.Visible = true;
+                    lblError.Text = "Registration Form Error: Please confirm your password";
+                }
+            }
+            if (txtRegPasswordConfirm.Text != txtRegPassword.Text)
+            {
+                if (lblError.Visible == true)
+                {
+                    lblError.Text += "\n Registration Form Error: Passwords do not match";
+                }
+                else
+                {
+                    lblError.Visible = true;
+                    lblError.Text = "Registration Form Error: Passwords do not match";
+                }
+            }
+            if ((txtBillingAddressStreetName.Text == null) || (txtBillingAddressStreetName.Text == String.Empty))
+            {
+                if (lblError.Visible == true)
+                {
+                    lblError.Text += "\n Registration Form Error: enter billing street name";
+                }
+                else
+                {
+                    lblError.Visible = true;
+                    lblError.Text = "Registration Form Error: enter billing street name";
+                }
+            }
+            if ((txtBillingAddressStreetNumber.Text == null) || (txtBillingAddressStreetNumber.Text == String.Empty))
+            {
+                if (lblError.Visible == true)
+                {
+                    lblError.Text += "\n Registration Form Error: enter billing street number";
+                }
+                else
+                {
+                    lblError.Visible = true;
+                    lblError.Text = "Registration Form Error: enter billing street number";
+                }
+            }
+            if ((txtBillingCity.Text == null) || (txtBillingCity.Text == String.Empty))
+            {
+                if (lblError.Visible == true)
+                {
+                    lblError.Text += "\n Registration Form Error: enter billing city";
+                }
+                else
+                {
+                    lblError.Visible = true;
+                    lblError.Text = "Registration Form Error: enter billing city";
+                }
+            }
+            if ((txtBillingState.Text == null) || (txtBillingState.Text == String.Empty))
+            {
+                if (lblError.Visible == true)
+                {
+                    lblError.Text += "\n Registration Form Error: enter billing state";
+                }
+                else
+                {
+                    lblError.Visible = true;
+                    lblError.Text = "Registration Form Error: enter billing state";
+                }
+            }
+            if ((txtBillingZipCode.Text == null) || (txtBillingZipCode.Text == String.Empty))
+            {
+                if (lblError.Visible == true)
+                {
+                    lblError.Text += "\n Registration Form Error: enter billing Zip Code";
+                }
+                else
+                {
+                    lblError.Visible = true;
+                    lblError.Text = "Registration Form Error: enter billing Zip Code";
                 }
             }
         }

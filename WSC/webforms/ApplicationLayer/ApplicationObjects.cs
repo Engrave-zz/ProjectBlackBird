@@ -324,7 +324,7 @@ namespace WSC.ApplicationLayer
                                        item.InventoryItemId.ToString());
                 notification.NotificationType = BusinessLayer.Enumerations.NotificationType.EnRoute;
                 notification.IsRead = false;
-                notification.PermissionScope = BusinessLayer.Enumerations.Permission.WorkSpecialist;
+                notification.PermissionScope = BusinessLayer.Enumerations.Permission.Manager;
 
                 // INSERT notification to database
                 notificationReturnValue = _notificationBusinessObject.InsertNotification(notification);
@@ -366,31 +366,31 @@ namespace WSC.ApplicationLayer
                     message = "Order ID: " + order.OrderId.ToString() + " - STATUS CHANGE = Work Complete";
                     notification.NotificationMessage = message;
                     notification.NotificationType = Enumeration.NotificationType.WorkComplete;
-                    notification.PermissionScope = Enumeration.Permission.OperationsManager;
+                    notification.PermissionScope = Enumeration.Permission.Manager;
                     returnValue = _businessObjects.InsertNotification(notification);
                     break;
                 case Enumeration.OrderStatus.EnRoute:
                     message = "Order ID: " + order.OrderId.ToString() + " - STATUS CHANGE = En Route";
                     notification.NotificationMessage = message;
                     notification.NotificationType = Enumeration.NotificationType.EnRoute;
-                    notification.PermissionScope = Enumeration.Permission.WorkSpecialist;
+                    notification.PermissionScope = Enumeration.Permission.Manager;
                     returnValue = _businessObjects.InsertNotification(notification);
                     break;
                 case Enumeration.OrderStatus.Delivered:
-                    if (senderPermissionScope == Enumeration.Permission.SalesPerson)
+                    if (senderPermissionScope == Enumeration.Permission.Customer)
                     {
                         message = "Order ID: " + order.OrderId.ToString() + " - STATUS CHANGE = Delivered";
                         notification.NotificationMessage = message;
                         notification.NotificationType = Enumeration.NotificationType.Delivered;
-                        notification.PermissionScope = Enumeration.Permission.OperationsManager;
+                        notification.PermissionScope = Enumeration.Permission.Manager;
                         returnValue = _businessObjects.InsertNotification(notification);
                     }
-                    else if (senderPermissionScope == Enumeration.Permission.StockClerk)
+                    else if (senderPermissionScope == Enumeration.Permission.Manager)
                     {
                         message = "Order ID: " + order.OrderId.ToString() + " - STATUS CHANGE = Delivered";
                         notification.NotificationMessage = message;
                         notification.NotificationType = Enumeration.NotificationType.Delivered;
-                        notification.PermissionScope = Enumeration.Permission.WorkSpecialist;
+                        notification.PermissionScope = Enumeration.Permission.Manager;
                         returnValue = _businessObjects.InsertNotification(notification);
                     }
                     break;
@@ -398,14 +398,14 @@ namespace WSC.ApplicationLayer
                     message = "Order ID: " + order.OrderId.ToString() + " - STATUS CHANGE = Order Complete";
                     notification.NotificationMessage = message;
                     notification.NotificationType = Enumeration.NotificationType.OrderComplete;
-                    notification.PermissionScope = Enumeration.Permission.SalesPerson;
+                    notification.PermissionScope = Enumeration.Permission.Customer;
                     returnValue = _businessObjects.InsertNotification(notification);
                     break;
                 case Enumeration.OrderStatus.FailedValidation:
                     message = "Order ID: " + order.OrderId.ToString() + " - STATUS CHANGE = Failed Validation";
                     notification.NotificationMessage = message;
                     notification.NotificationType = Enumeration.NotificationType.FailedQualityControl;
-                    notification.PermissionScope = Enumeration.Permission.WorkSpecialist;
+                    notification.PermissionScope = Enumeration.Permission.Manager;
                     returnValue = _businessObjects.InsertNotification(notification);
                     break;
             }

@@ -23,11 +23,11 @@ namespace BusinessLayer
             }
         }
 
-        internal bool _isSalesPerson;
-        public bool IsSalesPerson { get { return _isSalesPerson; } set { _isSalesPerson = value; RefreshToken(); } }
+        internal bool _isCustomer;
+        public bool IsCustomer { get { return _isCustomer; } set { _isCustomer = value; RefreshToken(); } }
 
-        internal bool _isOperationsManager;
-        public bool IsOperationsManager { get { return _isOperationsManager; } set { _isOperationsManager = value; RefreshToken(); } }
+        internal bool _isManager;
+        public bool IsManager { get { return _isManager; } set { _isManager = value; RefreshToken(); } }
 
         internal bool _isStockClerk;
         public bool IsStockClerk { get { return _isStockClerk; } set { _isStockClerk = value; RefreshToken(); } }
@@ -42,14 +42,10 @@ namespace BusinessLayer
         {
             int _tokenValue = 0;
 
-            if (IsSalesPerson)
-                _tokenValue = _tokenValue + (int)Permission.SalesPerson;
-            if (IsStockClerk)
-                _tokenValue = _tokenValue + (int)Permission.StockClerk;
-            if (IsOperationsManager)
-                _tokenValue = _tokenValue + (int)Permission.OperationsManager;
-            if (IsWorkSpecialist)
-                _tokenValue = _tokenValue + (int)Permission.WorkSpecialist;
+            if (IsCustomer)
+                _tokenValue = _tokenValue + (int)Permission.Customer;
+            if (IsManager)
+                _tokenValue = _tokenValue + (int)Permission.Manager;
 
             _token = _tokenValue;
         }
@@ -64,13 +60,9 @@ namespace BusinessLayer
                 {
                     switch ((int)Math.Pow(2.0,_iteration))
                     {
-                        case (int)Permission.StockClerk: _isStockClerk = true;
+                        case (int)Permission.Customer: _isCustomer = true;
                             break;
-                        case (int)Permission.SalesPerson: _isSalesPerson = true;
-                            break;
-                        case (int)Permission.OperationsManager: _isOperationsManager = true;
-                            break;
-                        case (int)Permission.WorkSpecialist: _isWorkSpecialist = true;
+                        case (int)Permission.Manager: _isManager = true;
                             break;
                     }
                 }
@@ -89,10 +81,8 @@ namespace BusinessLayer
                 {
                     switch ((int)Math.Pow(2.0, _iteration))
                     {
-                        case (int)Permission.OperationsManager: return Permission.OperationsManager;
-                        case (int)Permission.SalesPerson: return Permission.SalesPerson;
-                        case (int)Permission.WorkSpecialist: return Permission.WorkSpecialist;
-                        case (int)Permission.StockClerk: return Permission.StockClerk;
+                        case (int)Permission.Manager: return Permission.Manager;
+                        case (int)Permission.Customer: return Permission.Customer;
                     }
                 }
 

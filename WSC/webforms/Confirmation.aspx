@@ -1,4 +1,4 @@
-﻿<%@ Page EnableEventValidation="false" Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="WSC.webforms.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Confirmation.aspx.cs" Inherits="WSC.webforms.Confirmation" %>
 
 <!DOCTYPE HTML>
 <html>
@@ -106,13 +106,16 @@
 			<div class="row row-mt-15em">
 				<div class="col-md-12 mt-text text-center animate-box" data-animate-effect="fadeInUp">
                     <h2><strong><asp:Label ID="lblError" CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" runat="server" Visible="false"></asp:Label></strong></h2>
-					<h1><strong>Login</strong></h1>	
-					<h2>Please enter your login information below</h2>
+					<h1><strong>Confirmation</strong></h1>	
+					<h2>Please see your confirmation details below, if you see any failures please contact helpdesk. Press confirm to return to Login Page.</h2>
 					<div class="text-center">         
-                         <asp:TextBox ID="txtUserName" runat="server" placeholder="UserName"></asp:TextBox>
-                         <asp:TextBox ID="txtPassword" runat="server" placeholder="Password" TextMode="Password"></asp:TextBox>
-                         <asp:Button ID="submitBtn" OnClick="submitBtn_Click" runat="server" CssClass="btn btn-primary" Text="Submit" />
-                         </div>
+                        <asp:Label ID="lblUserName" Visible="true" runat="server"></asp:Label>
+                        <asp:Label ID="lblUserCreated" Visible="true" runat="server"></asp:Label>
+                        <asp:Label ID="lblWriteBillingAddress" Visible="true" runat="server"></asp:Label>
+                        <asp:Label ID="lblWriteMailingAddress" Visible="true" runat="server"></asp:Label>
+                        <asp:Label ID="lblWritePersonRecord" Visible="true" runat="server"></asp:Label>
+                        <asp:Button ID="btnConfirm" OnClick="btnConfirm_Click" runat="server" CssClass="btn btn-primary" Text="Confirm" />
+                        </div>
 				</div>
                 <div class="col-md-12 mt-text text-center animate-box" data-animate-effect="fadeInUp">
                         <asp:Label ID="txtError" runat="server" Visible="false"></asp:Label>
@@ -120,52 +123,6 @@
 			</div>
 		</div>
 	</header>
-
-    <div id="gtco-subscribe">
-		<div class="gtco-container">
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-					<h2>Register</h2>
-					<p>If you're a new customer, fill out the form below to register.</p>
-				</div>
-			</div>
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2">
-					<form class="form-inline">
-						<div class="col-md-6 col-sm-6">
-							<div class="form-group">
-                                <asp:label CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" runat="server"><h3>Personal Info</h3></asp:label>
-								<asp:TextBox runat="server" cssclass="form-control" id="txtFirstName" placeholder="First Name"> </asp:TextBox>
-								<asp:TextBox runat="server" cssclass="form-control" id="txtLastName" placeholder="Last Name"> </asp:TextBox>
-                                <asp:TextBox runat="server" cssclass="form-control" TextMode="Phone" id="txtPhoneNumber" placeholder="Phone Number"> </asp:TextBox>
-								<asp:TextBox runat="server" cssclass="form-control" id="txtAddressStreetNumber" placeholder="Address Street Number"> </asp:TextBox>
-                                <asp:TextBox runat="server" cssclass="form-control" id="txtAddressStreetName" placeholder="Address Street Name"> </asp:TextBox>
-								<asp:TextBox runat="server" cssclass="form-control" id="txtCity" placeholder="City"> </asp:TextBox>
-								<asp:TextBox runat="server" cssclass="form-control" id="txtState" placeholder="State"> </asp:TextBox>
-                                <asp:TextBox runat="server" cssclass="form-control" id="txtZipCode" placeholder="Zip Code"> </asp:TextBox>
-                                <asp:TextBox runat="server" cssclass="form-control" id="txtEmail" TextMode="Email" placeholder="Your Email"> </asp:TextBox>
-								<asp:TextBox runat="server" cssclass="form-control" id="txtEmailConfirm" TextMode="Email" placeholder="Confirm Email"> </asp:TextBox>
-                                <asp:TextBox runat="server" cssclass="form-control" id="txtRegPassword" TextMode="Password" placeholder="Password"> </asp:TextBox>
-								<asp:TextBox runat="server" cssclass="form-control" id="txtRegPasswordConfirm" TextMode="Password" placeholder="Confirm Password"> </asp:TextBox>
-							</div>
-						</div>
-                        <div class="col-md-6 col-sm-6">
-							<div class="form-group">
-                                <asp:label CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" runat="server"><h3>Billing Info</h3></asp:label>
-								<asp:TextBox runat="server" cssclass="form-control" id="txtBillingAddressStreetNumber" placeholder="Address Street Number"> </asp:TextBox>
-                                <asp:TextBox runat="server" cssclass="form-control" id="txtBillingAddressStreetName" placeholder="Address Street Name"> </asp:TextBox>
-								<asp:TextBox runat="server" cssclass="form-control" id="txtBillingCity" placeholder="City"> </asp:TextBox>
-								<asp:TextBox runat="server" cssclass="form-control" id="txtBillingState" placeholder="State"> </asp:TextBox>
-                                <asp:TextBox runat="server" cssclass="form-control" id="txtBillingZipCode" placeholder="Zip Code"> </asp:TextBox>
-                                <asp:CheckBox ID="chckBoxSameAsMailing" CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" OnCheckedChanged="chckBoxSameAsMailing_CheckedChanged" AutoPostBack="true" runat="server" ForeColor="White" Text="Same as personal?"/>
-                                <asp:Button runat="server" ID="Button1" OnClick="btnRegister_Click" CssClass="btn btn-default btn-block" Text="Register"/>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<footer id="gtco-footer" role="contentinfo">
 		<div class="gtco-container">
@@ -259,6 +216,3 @@
 	<script src="../js/main.js"></script>
     </form>
 	</body>
-</html>
-
-

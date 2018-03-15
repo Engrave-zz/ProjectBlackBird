@@ -18,7 +18,7 @@ namespace WSC.webforms
                 string strRole = ht.ContainsKey("Role") ? Convert.ToString(ht["Role"]) : "";
                 string strFirstName = ht.ContainsKey("FirstName") ? Convert.ToString(ht["FirstName"]) : "";
                 string strLastName = ht.ContainsKey("LastName") ? Convert.ToString(ht["LastName"]) : "";
-                if(!(strRole == "Customer" ))
+                if (!(strRole == "Customer" ))
                 {
                     Session.Clear();
                     Response.Redirect("Login.aspx");
