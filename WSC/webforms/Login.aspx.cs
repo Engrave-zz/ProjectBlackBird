@@ -71,6 +71,7 @@ namespace WSC.webforms
             ht.Add("Role", "Employee");
             ht.Add("FirstName", user.FirstName);
             ht.Add("LastName", user.LastName);
+            ht.Add("Email", user.EmailAddress);
             ht.Add("PersonID", user.PersonId);
             Session["UserInfo"] = ht;
         }
@@ -82,6 +83,7 @@ namespace WSC.webforms
             ht.Add("FirstName", user.FirstName);
             ht.Add("LastName", user.LastName);
             ht.Add("PersonID", user.PersonId);
+            ht.Add("Email", user.EmailAddress);
             Session["UserInfo"] = ht;
             Response.Redirect("CustomerPage.aspx");
         }

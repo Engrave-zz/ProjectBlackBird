@@ -119,29 +119,18 @@
                                 <asp:Label runat="server" cssclass="form-control" ID="lblInscriptionType" ForeColor="White"></asp:Label>
                                 <asp:TextBox runat="server" cssclass="form-control" id="txtDesiredText" placeholder="Desired Text"> </asp:TextBox>
                                 <asp:Button runat="server" ID="btnOrderNow" CssClass="btn btn-default btn-block" OnClick="btnOrderNow_Click" Text="Place Order"/>
-
+                                <asp:Label runat="server" cssclass="form-control" ID="lastnamelbl" ForeColor="White" Visible="false"></asp:Label>
+                                <asp:Label runat="server" cssclass="form-control" ID="errorlbl" ForeColor="White" Visible="false"></asp:Label>
 							</div>
 						</div>
                         <div class="col-md-6 col-sm-6">
 							<div class="form-group">
-                                <asp:label CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" runat="server"><h3>Billing Info</h3></asp:label>
-								<asp:TextBox runat="server" cssclass="form-control" id="txtBillingAddressStreetNumber" placeholder="Address Street Number"> </asp:TextBox>
-                                <asp:TextBox runat="server" cssclass="form-control" id="txtBillingAddressStreetName" placeholder="Address Street Name"> </asp:TextBox>
-								<asp:TextBox runat="server" cssclass="form-control" id="txtBillingCity" placeholder="City"> </asp:TextBox>
-								<asp:TextBox runat="server" cssclass="form-control" id="txtBillingState" placeholder="State"> </asp:TextBox>
-                                <asp:TextBox runat="server" cssclass="form-control" id="txtBillingZipCode" placeholder="Zip Code"> </asp:TextBox>
+                                <asp:label CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" runat="server"><h3>My Orders</h3></asp:label>
+                                <asp:GridView runat="server" ID="dgvOrders" Visible="true" AutoGenerateColumns="true" ForeColor="White"></asp:GridView>
+                                <asp:Button runat="server" ID="Refresh" CssClass="btn btn-default btn-block" OnClick="Refresh_Click" Text="Refresh"/>
+
 							</div>
 						</div>
-                        <div class="col-md-6 col-sm-6">
-                            <div class="form-group">
-                            <asp:label CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" runat="server"><h3>Email & Password</h3></asp:label>
-                                <asp:TextBox runat="server" cssclass="form-control" id="txtEmail" TextMode="Email" placeholder="Your Email"> </asp:TextBox>
-								<asp:TextBox runat="server" cssclass="form-control" id="txtEmailConfirm" TextMode="Email" placeholder="Confirm Email"> </asp:TextBox>
-                                <asp:TextBox runat="server" cssclass="form-control" id="txtRegPassword" TextMode="Password" placeholder="Password"> </asp:TextBox>
-								<asp:TextBox runat="server" cssclass="form-control" id="txtRegPasswordConfirm" TextMode="Password" placeholder="Confirm Password"> </asp:TextBox>
-                                <asp:Button runat="server" ID="Button1" CssClass="btn btn-default btn-block" Text="Register"/>
-                            </div>
-                        </div>
 					</form>
 				</div>
 			</div>
