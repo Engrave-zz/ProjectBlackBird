@@ -38,5 +38,15 @@ namespace WSC.webforms
         {
             Response.Redirect("CustomerPage.aspx");
         }
+
+        protected void btnAddToOrder_Click(object sender, EventArgs e)
+        {
+            Button B = (Button)sender;
+            string ItemName;
+            ItemName = B.ID;
+
+            Session["ItemName"] = ItemName;
+            Response.Redirect("CustomerPage.aspx");
+        }
     }
 }

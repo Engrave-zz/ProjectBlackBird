@@ -215,7 +215,7 @@
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
 						<h2>Services</h2>
-						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+						<p>We offer the best engraving and printing services available in the market! see our available products below.</p>
 					</div>
 				</div>
 				<div class="row">
@@ -227,9 +227,9 @@
 								<img src="../images/img_1.jpg" alt="Image" class="img-responsive">
 							</figure>
 							<div class="gtco-text">
-								<h2>Data Analytics</h2>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-								<p><span class="btn btn-primary">Learn more</span></p>
+								<h2>Visor</h2>
+								<p>Made by bohemian visors inc, best quality visors for fraction of the price.</p>
+								<p><asp:Button runat="server" CssClass="btn btn-primary" id="Visor" Text="Order Now" OnClick="btnAddToOrder_Click"/></p>
 							</div>
 						</a>
 					</div>
@@ -240,9 +240,9 @@
 								<img src="../images/img_2.jpg" alt="Image" class="img-responsive">
 							</figure>
 							<div class="gtco-text">
-								<h2>Web Development</h2>
+								<h2>Small Gold Plaque</h2>
 								<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-								<p><span class="btn btn-primary">Learn more</span></p>
+								<p><asp:Button runat="server" CssClass="btn btn-primary" id="Small_Gold_Plaque" Text="Order Now" OnClick="btnAddToOrder_Click"/></p>
 							</div>
 						</a>
 					</div>

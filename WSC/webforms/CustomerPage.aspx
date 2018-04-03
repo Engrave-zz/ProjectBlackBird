@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CustomerPage.aspx.cs" Inherits="WSC.webforms.CustomerPage" %>
+﻿<%@ Page EnableEventValidation="false" Language="C#" AutoEventWireup="true" CodeBehind="CustomerPage.aspx.cs" Inherits="WSC.webforms.CustomerPage" %>
 
 <!DOCTYPE HTML>
 <html>
@@ -98,24 +98,56 @@
 			</div>
 		</nav>
 	</div>
-	
-	<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style="background-image: url(../images/img_bg_4.jpg)" data-stellar-background-ratio="0.5">
-		<div class="overlay"></div>
+     <div id="gtco-subscribe">
 		<div class="gtco-container">
-			<div class="row row-mt-15em">
-				<div class="col-md-12 mt-text text-center animate-box" data-animate-effect="fadeInUp">
-                    <h1><strong>Welcome!</strong></h1>	
-					<h2>You have arrived to the customer area, request an order below or view the status of an existing order.</h2>
-                    <h2><strong><asp:Label ID="lblConfirm" CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" runat="server" Visible="true"></asp:Label></strong></h2>
-				    <div class="text-center">
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+					<h2>Welcome!</h2>
+					<p>You have arrived to the customer area, request an order below or view the status of an existing order.</p>
+                    <h2><strong><asp:Label ID="lblItemName" CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" runat="server" Visible="true"></asp:Label></strong></h2>
 
-				    </div>
-                </div>
-                <div class="col-md-12 mt-text text-center animate-box" data-animate-effect="fadeInUp">
-                </div>
+				</div>
+			</div>
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2">
+					<form class="form-inline">
+						<div class="col-md-6 col-sm-6">
+							<div class="form-group">
+                                <asp:label CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" runat="server"><h3>Order</h3></asp:label>
+                                <asp:DropDownList runat="server" cssclass="form-control" BackColor="#d9534f" AutoPostBack="true" id="ItemDPList" OnSelectedIndexChanged="ItemDPList_SelectedIndexChanged" Visible="true"></asp:DropDownList>
+                                <asp:Label runat="server" cssclass="form-control" ID="lblItemCost" ForeColor="White"></asp:Label>
+                                <asp:Label runat="server" cssclass="form-control" ID="lblInscriptionType" ForeColor="White"></asp:Label>
+                                <asp:TextBox runat="server" cssclass="form-control" id="txtDesiredText" placeholder="Desired Text"> </asp:TextBox>
+                                <asp:Button runat="server" ID="btnOrderNow" CssClass="btn btn-default btn-block" OnClick="btnOrderNow_Click" Text="Place Order"/>
+
+							</div>
+						</div>
+                        <div class="col-md-6 col-sm-6">
+							<div class="form-group">
+                                <asp:label CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" runat="server"><h3>Billing Info</h3></asp:label>
+								<asp:TextBox runat="server" cssclass="form-control" id="txtBillingAddressStreetNumber" placeholder="Address Street Number"> </asp:TextBox>
+                                <asp:TextBox runat="server" cssclass="form-control" id="txtBillingAddressStreetName" placeholder="Address Street Name"> </asp:TextBox>
+								<asp:TextBox runat="server" cssclass="form-control" id="txtBillingCity" placeholder="City"> </asp:TextBox>
+								<asp:TextBox runat="server" cssclass="form-control" id="txtBillingState" placeholder="State"> </asp:TextBox>
+                                <asp:TextBox runat="server" cssclass="form-control" id="txtBillingZipCode" placeholder="Zip Code"> </asp:TextBox>
+							</div>
+						</div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                            <asp:label CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" runat="server"><h3>Email & Password</h3></asp:label>
+                                <asp:TextBox runat="server" cssclass="form-control" id="txtEmail" TextMode="Email" placeholder="Your Email"> </asp:TextBox>
+								<asp:TextBox runat="server" cssclass="form-control" id="txtEmailConfirm" TextMode="Email" placeholder="Confirm Email"> </asp:TextBox>
+                                <asp:TextBox runat="server" cssclass="form-control" id="txtRegPassword" TextMode="Password" placeholder="Password"> </asp:TextBox>
+								<asp:TextBox runat="server" cssclass="form-control" id="txtRegPasswordConfirm" TextMode="Password" placeholder="Confirm Password"> </asp:TextBox>
+                                <asp:Button runat="server" ID="Button1" CssClass="btn btn-default btn-block" Text="Register"/>
+                            </div>
+                        </div>
+					</form>
+				</div>
 			</div>
 		</div>
-	</header>
+	</div>
+		
 
 	<footer id="gtco-footer" role="contentinfo">
 		<div class="gtco-container">
