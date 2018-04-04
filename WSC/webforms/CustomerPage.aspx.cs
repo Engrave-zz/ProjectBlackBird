@@ -22,6 +22,10 @@ namespace WSC.webforms
         private List<InventoryItem> inventoryItems = new List<InventoryItem>();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (lblError.Visible == true)
+            {
+                lblError.Text = null;
+            }
             Logoutbtn.Visible = false;
             welcomelbl.Visible = false;
             if(!IsPostBack)
@@ -74,6 +78,10 @@ namespace WSC.webforms
 
                 Orders_Load();
             }
+            else
+            {
+                Response.Redirect("login.aspx");
+            }
         }
         protected void Logoutbtn_Click(object sender, EventArgs e)
         {
@@ -99,6 +107,13 @@ namespace WSC.webforms
 
         protected void btnOrderNow_Click(object sender, EventArgs e)
         {
+            if ((txtDesiredText.Text == null) || (txtDesiredText.Text == string.Empty))
+            {
+                lblError.Text = "Error: You need to enter your desired text";
+                lblError.Visible = true;
+                return;
+            }
+
             BusinessObjects _businessObjects = new BusinessObjects();
             string strLastName = lastnamelbl.Text;
 
@@ -117,6 +132,8 @@ namespace WSC.webforms
             }
             lastnamelbl.Text = ActualCustomer.PersonType.ToString();
             
+
+
             newItem.CatalogItem = CatelogItem;
             newItem.ItemInscription = txtDesiredText.Text;
             newOrder.ItemList.Add(newItem);
@@ -124,6 +141,7 @@ namespace WSC.webforms
             newOrder.Person = ActualCustomer;
             OrderStatus orderstatus = (OrderStatus)Enum.Parse(typeof(OrderStatus), "Submitted");
             newOrder.OrderStatus = orderstatus;
+
             int returnValue = ApplicationObjects.CreateOrder(newOrder);
             if (returnValue == 0)
             {

@@ -224,7 +224,7 @@ namespace DataAccessLayer.Extensions
                     objectCommand.OrderFulfillDate = order.OrderFulfillDate;
                     objectCommand.OrderStatusId = order.OrderStatusId;
                     objectCommand.PersonId = order.PersonId;
-
+                    
                     objectConnection.Open();
                     objectCommand.ExecuteNonQuery();
 

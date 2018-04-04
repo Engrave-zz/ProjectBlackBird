@@ -105,6 +105,7 @@
 					<h2>Welcome!</h2>
 					<p>You have arrived to the customer area, request an order below or view the status of an existing order.</p>
                     <h2><strong><asp:Label ID="lblItemName" CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" runat="server" Visible="true"></asp:Label></strong></h2>
+                    <p><strong><asp:Label ID="lblError" ForeColor="White" CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" runat="server" Visible="false"></asp:Label></strong></p>
 
 				</div>
 			</div>
@@ -120,7 +121,6 @@
                                 <asp:TextBox runat="server" cssclass="form-control" id="txtDesiredText" placeholder="Desired Text"> </asp:TextBox>
                                 <asp:Button runat="server" ID="btnOrderNow" CssClass="btn btn-default btn-block" OnClick="btnOrderNow_Click" Text="Place Order"/>
                                 <asp:Label runat="server" cssclass="form-control" ID="lastnamelbl" ForeColor="White" Visible="false"></asp:Label>
-                                <asp:Label runat="server" cssclass="form-control" ID="errorlbl" ForeColor="White" Visible="false"></asp:Label>
 							</div>
 						</div>
                         <div class="col-md-6 col-sm-6">

@@ -40,6 +40,15 @@ namespace WSC.webforms {
         protected global::System.Web.UI.WebControls.Label lblItemName;
         
         /// <summary>
+        /// lblError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblError;
+        
+        /// <summary>
         /// ItemDPList control.
         /// </summary>
         /// <remarks>
@@ -92,15 +101,6 @@ namespace WSC.webforms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lastnamelbl;
-        
-        /// <summary>
-        /// errorlbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label errorlbl;
         
         /// <summary>
         /// dgvOrders control.
