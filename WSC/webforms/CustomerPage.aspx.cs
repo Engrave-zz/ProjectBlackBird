@@ -22,7 +22,6 @@ namespace WSC.webforms
         private List<InventoryItem> inventoryItems = new List<InventoryItem>();
         protected void Page_Load(object sender, EventArgs e)
         {
-            
             Logoutbtn.Visible = false;
             welcomelbl.Visible = false;
             if(!IsPostBack)
@@ -107,8 +106,6 @@ namespace WSC.webforms
             OrderItem newItem = new OrderItem();
             string ItemName = ItemDPList.Items[ItemDPList.SelectedIndex].Text;
             CatelogItem = _businessObjects.GetCatalogItemByItemName(ItemName);
-            errorlbl.Text = CatelogItem.ItemName;
-            errorlbl.Visible = true;
             Customer = _businessObjects.GetCustomerByLastName(strLastName);
             Customer ActualCustomer = new Customer();
             foreach(Customer Cust in Customer)
@@ -128,11 +125,11 @@ namespace WSC.webforms
             OrderStatus orderstatus = (OrderStatus)Enum.Parse(typeof(OrderStatus), "Submitted");
             newOrder.OrderStatus = orderstatus;
             int returnValue = ApplicationObjects.CreateOrder(newOrder);
-            if(returnValue == 0)
+            if (returnValue == 0)
             {
-               //rrorlbl.Text = "Success! Your Order Has Been Submitted!";
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + "Your Order is complete!" + "');", true);
             }
-
+            Response.Redirect(Request.RawUrl);
             txtDesiredText = null;
             lblInscriptionType = null;
             lblItemCost = null;
@@ -148,7 +145,7 @@ namespace WSC.webforms
             orderTable.Columns.Add(new DataColumn("Entry Date", typeof(string)));
             orderTable.Columns.Add(new DataColumn("Fulfilled Date", typeof(string)));
             orderTable.Columns.Add(new DataColumn("Number of Items", typeof(int)));
-            orderTable.Columns.Add(new DataColumn("Order Status", typeof(OrderStatus)));
+            orderTable.Columns.Add(new DataColumn("Order Status", typeof(string)));
             dgvOrders.DataSource = orderTable;
             dgvOrders.DataBind();
 
@@ -170,7 +167,7 @@ namespace WSC.webforms
                     newRow["Entry Date"] = order.OrderEntryDate.ToString();
                     newRow["Fulfilled Date"] = (order.OrderFulfillDate != null) ? order.OrderFulfillDate.ToString() : "not filled";
                     newRow["Number of Items"] = order.NumberOrderItems.ToString();
-                    newRow["Order Status"] = order.OrderStatus;
+                    newRow["Order Status"] = order.OrderStatus.ToString();
                     orderTable.Rows.Add(newRow);
                 }
             }
