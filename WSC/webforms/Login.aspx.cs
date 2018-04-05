@@ -74,6 +74,7 @@ namespace WSC.webforms
             ht.Add("Email", user.EmailAddress);
             ht.Add("PersonID", user.PersonId);
             Session["UserInfo"] = ht;
+            Response.Redirect("ManagerPage.aspx");
         }
         public void ShowCustomerPage(UserAccount user)
         {

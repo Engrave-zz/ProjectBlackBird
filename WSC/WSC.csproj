@@ -23,6 +23,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -188,6 +189,7 @@
     <Content Include="webforms\bin\Debug\WSC.vshost.exe" />
     <Content Include="webforms\Images\WSC_Logo.bmp" />
     <Content Include="webforms\Images\wsc_logo1.bmp" />
+    <Content Include="webforms\ManagerPage.aspx" />
     <Content Include="webforms\obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
     <Content Include="webforms\obj\Debug\TempPE\WSCDataSet.Designer.cs.dll" />
     <Content Include="webforms\obj\Debug\WSC.csproj.FileListAbsolute.txt" />
@@ -414,6 +416,13 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="webforms\ApplicationLayer\ApplicationObjects.cs" />
+    <Compile Include="webforms\ManagerPage.aspx.cs">
+      <DependentUpon>ManagerPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webforms\ManagerPage.aspx.designer.cs">
+      <DependentUpon>ManagerPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="webforms\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="webforms\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="webforms\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
