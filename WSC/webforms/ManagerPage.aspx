@@ -115,8 +115,48 @@
                         <div class="col-md-6 col-sm-6">
 							<div class="form-group">
                                 <asp:label CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" runat="server"><h3>Customer Orders</h3></asp:label>
-                                <asp:GridView runat="server" ID="dgvOrders" Visible="true" AutoGenerateColumns="true" ForeColor="White"></asp:GridView>
+                                <asp:GridView runat="server" ID="dgvOrders" Visible="true" CssClass="form-control" AutoGenerateColumns="true" ForeColor="White"></asp:GridView>
                                 <asp:Button runat="server" ID="Refresh" CssClass="btn btn-default btn-block" Text="Refresh"/>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+            <div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2">
+					<form class="form-inline">
+                        <div class="col-md-6 col-sm-6">
+							<div class="form-group">
+                                <asp:label CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" runat="server"><h3>Employees</h3></asp:label>
+                                <asp:GridView ID="GridView1" runat="server" AllowSorting="True" CssClass="form-control" ForeColor="White" AutoGenerateColumns="False" DataKeyNames="userId" DataSourceID="SqlDataSource1">
+                                    <Columns>
+                                        <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+                                        <asp:BoundField DataField="userId" HeaderText="userId" ReadOnly="True" SortExpression="userId" />
+                                        <asp:BoundField DataField="userName" HeaderText="userName" SortExpression="userName" />
+                                        <asp:BoundField DataField="userPassword" HeaderText="userPassword" SortExpression="userPassword" />
+                                        <asp:BoundField DataField="permissionToken" HeaderText="permissionToken" SortExpression="permissionToken" />
+                                        <asp:BoundField DataField="personId" HeaderText="personId" SortExpression="personId" />
+                                    </Columns>
+                                </asp:GridView>
+                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:WSCConnectionString %>" DeleteCommand="DELETE FROM [tblUserAccess] WHERE [userId] = @userId" InsertCommand="INSERT INTO [tblUserAccess] ([userId], [userName], [userPassword], [permissionToken], [personId]) VALUES (@userId, @userName, @userPassword, @permissionToken, @personId)" SelectCommand="SELECT * FROM [tblUserAccess]" UpdateCommand="UPDATE [tblUserAccess] SET [userName] = @userName, [userPassword] = @userPassword, [permissionToken] = @permissionToken, [personId] = @personId WHERE [userId] = @userId">
+                                    <DeleteParameters>
+                                        <asp:Parameter Name="userId" Type="Object" />
+                                    </DeleteParameters>
+                                    <InsertParameters>
+                                        <asp:Parameter Name="userId" Type="Object" />
+                                        <asp:Parameter Name="userName" Type="String" />
+                                        <asp:Parameter Name="userPassword" Type="String" />
+                                        <asp:Parameter Name="permissionToken" Type="Int32" />
+                                        <asp:Parameter Name="personId" Type="Object" />
+                                    </InsertParameters>
+                                    <UpdateParameters>
+                                        <asp:Parameter Name="userName" Type="String" />
+                                        <asp:Parameter Name="userPassword" Type="String" />
+                                        <asp:Parameter Name="permissionToken" Type="Int32" />
+                                        <asp:Parameter Name="personId" Type="Object" />
+                                        <asp:Parameter Name="userId" Type="Object" />
+                                    </UpdateParameters>
+                                </asp:SqlDataSource>
 							</div>
 						</div>
 					</form>
@@ -124,8 +164,7 @@
 			</div>
 		</div>
 	</div>
-		
-
+    
 	<footer id="gtco-footer" role="contentinfo">
 		<div class="gtco-container">
 			<div class="row row-p	b-md">
