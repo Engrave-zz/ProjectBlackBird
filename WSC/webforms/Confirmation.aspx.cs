@@ -11,9 +11,13 @@ namespace WSC.webforms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // get confirmation session
             if (Session["Confirmation"] != null)
             {
+                // store confirmation sesion data in hashtable
                 System.Collections.Hashtable ht = (System.Collections.Hashtable)Session["Confirmation"];
+
+                // declare variables and assign session data from hashtable
                 string strUserName = ht.ContainsKey("UserName") ? Convert.ToString(ht["UserName"]) : "";
                 string strCustomerCreated = ht.ContainsKey("CustomerCreated") ? Convert.ToString(ht["CustomerCreated"]) : "";
                 string strWriteBillingAddress = ht.ContainsKey("WriteBillingAddress") ? Convert.ToString(ht["WriteBillingAddress"]) : "";
@@ -26,6 +30,7 @@ namespace WSC.webforms
                     Response.Redirect("Login.aspx");
                 }
 
+                // display username and successmessage to customer
                 lblConfirm.Text += "Username: " + strUserName;
                 lblConfirm.Text += "\n UserCreated: " + strCustomerCreated;
             }
@@ -33,6 +38,7 @@ namespace WSC.webforms
 
         protected void btnConfirm_Click(object sender, EventArgs e)
         {
+            // confirmation button clears the session and redirects user to the login page
             Session.Clear();
             Response.Redirect("login.aspx");
         }

@@ -35,9 +35,11 @@ namespace WSC.webforms
                 return;
             if ((txtPassword.Text == String.Empty) || (txtPassword.Text == null))
                 return;
-
+            
+            // get user account information from the database
             userAccount = ApplicationObjects.AuthenticateUser(txtUserName.Text, txtPassword.Text);
 
+            //If the user information is invalid, return error.
             if (userAccount.UserName == "invalid" && userAccount.PasswordHash == "invalid")
             {
                 lblError.Text += "Failed to authenticate with inputted username and password, Authentication Failed";
@@ -54,6 +56,7 @@ namespace WSC.webforms
             txtError.Text = "Success";
             txtError.Visible = true;
 
+            //redirect users based on permissions
             switch (userAccount.HighestPermission)
             {
                 case (Permission.Manager):
@@ -98,7 +101,7 @@ namespace WSC.webforms
             {
                 PermissionSet permissionSet = new PermissionSet();
                 permissionSet.IsCustomer = true;
-                //add code here to register user.
+                //Register User
                 string regUserName = txtFirstName.Text.Substring(0, 1) + txtLastName.Text;
                 UserAccount newUser = new UserAccount(regUserName, txtRegPassword.Text, false);
                 newUser.EmailAddress = txtEmail.Text;
@@ -200,8 +203,10 @@ namespace WSC.webforms
                     confirmht.Add("WritePersonRecord", "Success");
                     confirmht.Add("Role", "Customer");
                     scope.Complete();
-                }// End transaction
+                }
 
+
+                //redirect customer to confirmation page and pass data
                 Session["Confirmation"] = confirmht;
                 Response.Redirect("Confirmation.aspx");
 

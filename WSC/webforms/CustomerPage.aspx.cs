@@ -22,12 +22,15 @@ namespace WSC.webforms
         private List<InventoryItem> inventoryItems = new List<InventoryItem>();
         protected void Page_Load(object sender, EventArgs e)
         {
+            // set lblerror.text to null if it is visible
             if (lblError.Visible == true)
             {
                 lblError.Text = null;
             }
             Logoutbtn.Visible = false;
             welcomelbl.Visible = false;
+
+            // Upon postback refresh the list items.
             if(!IsPostBack)
             {
                 ListItem SmallGoldPlaque = new ListItem("Small Gold Plaque", "1");
@@ -46,6 +49,7 @@ namespace WSC.webforms
                 ItemDPList.Items.Add(BaseballHat);
 
             }
+            // If the session "UserInfor" is passed in, check to see if the user is an employee or customer and display the page.
             if (Session["UserInfo"] != null)
             {
                 System.Collections.Hashtable ht = (System.Collections.Hashtable)Session["UserInfo"];
@@ -60,11 +64,14 @@ namespace WSC.webforms
                 welcomelbl.Visible = true;
                 Logoutbtn.Visible = true;
 
+                // if the user is not a customer, they will be redirected to the login page
                 if (!(strRole == "Customer" ))
                 {
                     Session.Clear();
                     Response.Redirect("Login.aspx");
                 }
+                
+                // getting the ItemName from homepage
                 if (Session["ItemName"] != null)
                 {
                     string ItemName = Session["ItemName"].ToString();
@@ -75,7 +82,7 @@ namespace WSC.webforms
                     }
                     SetCatelogInfo(ItemName);
                 }
-
+                // Loads all orders for the user
                 Orders_Load();
             }
             else
@@ -83,6 +90,8 @@ namespace WSC.webforms
                 Response.Redirect("login.aspx");
             }
         }
+
+        // log out the user by clearing the session and redirecting to homepage
         protected void Logoutbtn_Click(object sender, EventArgs e)
         {
             Session.Clear();
@@ -95,6 +104,7 @@ namespace WSC.webforms
             SetCatelogInfo(selectedindex);
         }
 
+        // gets the catelog information from the database and displays the information on the page.
         public void SetCatelogInfo(string ItemName)
         {
             BusinessObjects _businessObjects = new BusinessObjects();
@@ -105,6 +115,7 @@ namespace WSC.webforms
     
         }
 
+        // this event is triggered when the order button is clicked on the customer page.
         protected void btnOrderNow_Click(object sender, EventArgs e)
         {
             if ((txtDesiredText.Text == null) || (txtDesiredText.Text == string.Empty))
@@ -116,9 +127,10 @@ namespace WSC.webforms
 
             BusinessObjects _businessObjects = new BusinessObjects();
             string strLastName = lastnamelbl.Text;
-
+            // create new order and newitem objects
             Order newOrder = new Order();
             OrderItem newItem = new OrderItem();
+            // populate the new order and newitem objects with data from the database
             string ItemName = ItemDPList.Items[ItemDPList.SelectedIndex].Text;
             CatelogItem = _businessObjects.GetCatalogItemByItemName(ItemName);
             Customer = _businessObjects.GetCustomerByLastName(strLastName);
@@ -133,7 +145,7 @@ namespace WSC.webforms
             lastnamelbl.Text = ActualCustomer.PersonType.ToString();
             
 
-
+            // fill new item object with data
             newItem.CatalogItem = CatelogItem;
             newItem.ItemInscription = txtDesiredText.Text;
             newOrder.ItemList.Add(newItem);
@@ -142,6 +154,7 @@ namespace WSC.webforms
             OrderStatus orderstatus = (OrderStatus)Enum.Parse(typeof(OrderStatus), "Submitted");
             newOrder.OrderStatus = orderstatus;
 
+            // call the createorder method to create new order
             int returnValue = ApplicationObjects.CreateOrder(newOrder);
             if (returnValue == 0)
             {
@@ -167,7 +180,7 @@ namespace WSC.webforms
             dgvOrders.DataSource = orderTable;
             dgvOrders.DataBind();
 
-            //load
+            //load orders
             LoadOrders();
         }
 
