@@ -92,38 +92,49 @@
 				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
 					<h2>Welcome!</h2>
 					<p>You have arrived to the employee area, review customer orders and add new employees.</p>
-                    <h2><strong><asp:Label ID="lblItemName" CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" runat="server" Visible="true"></asp:Label></strong></h2>
                     <p><strong><asp:Label ID="lblError" ForeColor="White" CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" runat="server" Visible="false"></asp:Label></strong></p>
 
-				</div>
+                </div>
 			</div>
 			<div class="row animate-box">
 				<div class="col-md-8 col-md-offset-2">
 					<form class="form-inline">
                         <div class="col-md-6 col-sm-6">
 							<div class="form-group">
+                                <asp:label CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" runat="server"><h3>Set Order Status</h3></asp:label>
+                                <asp:Label runat="server"  ID="lblOrderID" ForeColor="White"></asp:Label>
+                                <asp:Label runat="server"  ID="lblFirstName" ForeColor="White"></asp:Label>
+                                <asp:Label runat="server"  ID="lblLastName" ForeColor="White"></asp:Label>
+                                <asp:Label runat="server"  ID="lblEntryDate" ForeColor="White"></asp:Label>
+                                <asp:Label runat="server"  ID="lblfulfilledDate" ForeColor="White"></asp:Label>
+                                <asp:Label runat="server"  ID="lblnumberOfItems" ForeColor="White"></asp:Label>
+                                <asp:DropDownList runat="server" cssclass="form-control" BackColor="#d9534f" id="OrderStatusList" Visible="true"></asp:DropDownList>
+                                <asp:Button runat="server" ID="btnUpdateStatus" CssClass="btn btn-default btn-block" OnClick="btnUpdateStatus_Click" Visible="false" Text="Update Status"/>
+                            </div>
+						</div>
+					</form>
+				</div>
+			</div>
+            <div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2">
+					<form class="form-inline">
+                             <div class="col-md-6 col-sm-6">
+							<div class="form-group">
                                 <asp:label CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" runat="server"><h3>Customer Orders</h3></asp:label>
-                                <asp:GridView runat="server" ID="dgvOrders" Visible="true" AutoGenerateColumns="true" ForeColor="White"></asp:GridView>
+                                <asp:GridView runat="server" ID="dgvOrders" Visible="true" AutoGenerateSelectButton="true" OnSelectedIndexChanging="dgvOrders_SelectedIndexChanging" AutoGenerateColumns="true" ForeColor="White"></asp:GridView>
                                 <asp:Button runat="server" ID="Refresh" CssClass="btn btn-default btn-block" Text="Refresh"/>
 							</div>
 						</div>
 					</form>
 				</div>
 			</div>
-		</div>
-	</div>
+ 
+         </div>
+     </div>
     
 	<footer id="gtco-footer" role="contentinfo">
 		<div class="gtco-container">
 			<div class="row row-p	b-md">
-
-				<div class="col-md-4">
-					<div class="gtco-widget">
-						<h3>About Us</h3>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore eos molestias quod sint ipsum possimus temporibus officia iste perspiciatis consectetur in fugiat.</p>
-						<p><a href="#">Learn more...</a></p>
-					</div>
-				</div>
 
 				<div class="col-md-4">
 					<div class="gtco-widget">
@@ -160,8 +171,7 @@
 		</div>
 	</footer>
 	</div>
-
-	</div>
+    </div>
 
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>

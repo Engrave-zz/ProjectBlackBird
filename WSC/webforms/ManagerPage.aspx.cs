@@ -15,6 +15,7 @@ namespace WSC.webforms
     public partial class ManagerPage : System.Web.UI.Page
     {
         private DataTable orderTable;
+        private List<Customer> Customer = new List<Customer>();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["UserInfo"] != null)
@@ -37,6 +38,24 @@ namespace WSC.webforms
                 }
 
                 Orders_Load();
+
+                if (!IsPostBack)
+                {
+                    ListItem Submitted = new ListItem("Submitted", "1");
+                    ListItem FailedValidation = new ListItem("Failed Validation", "2");
+                    ListItem WorkComplete = new ListItem("Work Complete", "3");
+                    ListItem Delivered = new ListItem("Delivered", "4");
+                    ListItem EnRoute = new ListItem("En Route", "5");
+                    ListItem Complete = new ListItem("Complete", "6");
+                    OrderStatusList.Items.Add(Submitted);
+                    OrderStatusList.Items.Add(FailedValidation);
+                    OrderStatusList.Items.Add(WorkComplete);
+                    OrderStatusList.Items.Add(Delivered);
+                    OrderStatusList.Items.Add(EnRoute);
+                    OrderStatusList.Items.Add(Complete);
+
+                    btnUpdateStatus.Visible = false;
+                }
             }
 
         }
@@ -81,6 +100,79 @@ namespace WSC.webforms
         {
             Session.Clear();
             Response.Redirect("Home.aspx");
+        }
+
+        protected void btnUpdateStatus_Click(object sender, EventArgs e)
+        {
+            BusinessObjects _businessobjects = new BusinessObjects();
+            Order order = new Order();
+            OrderStatus status = new OrderStatus();
+            string OrderStatuss = OrderStatusList.Items[OrderStatusList.SelectedIndex].Text;
+
+            switch(OrderStatuss.ToString()){
+
+                case "Submitted":
+                    {
+                        status = OrderStatus.Submitted;
+                        break;
+                    }
+                case "Work Complete":
+                    {
+                        status = OrderStatus.WorkComplete;
+                        break;
+                    }
+                case "Delivered":
+                    {
+                        status = OrderStatus.Delivered;
+                        break;
+                    }
+                case "En Route":
+                    {
+                        status = OrderStatus.EnRoute;
+                        break;
+                    }
+                case "Complete":
+                    {
+                        status = OrderStatus.WorkComplete;
+                        break;
+                    }
+                case "Failed Validation":
+                    {
+                        status = OrderStatus.FailedValidation;
+                        break;
+                    }
+
+            }
+
+            Customer = _businessobjects.GetCustomerByLastName(lblLastName.Text);
+            Customer ActualCustomer = new Customer();
+            foreach (Customer Cust in Customer)
+            {
+                if (Cust.PersonType.ToString() == "Customer")
+                {
+                    ActualCustomer = Cust;
+                }
+            }
+
+            order.OrderId = new Guid(lblOrderID.Text);
+            order.OrderStatus = status;
+            order.Person = ActualCustomer;
+            order.OrderEntryDate = DateTime.Parse(lblEntryDate.Text);
+
+            _businessobjects.UpdateOrder(order);
+
+            Response.Redirect(Request.RawUrl);
+        }
+
+        protected void dgvOrders_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            lblOrderID.Text = dgvOrders.Rows[e.NewSelectedIndex].Cells[1].Text;
+            lblFirstName.Text = dgvOrders.Rows[e.NewSelectedIndex].Cells[2].Text;
+            lblLastName.Text = dgvOrders.Rows[e.NewSelectedIndex].Cells[3].Text;
+            lblEntryDate.Text = dgvOrders.Rows[e.NewSelectedIndex].Cells[4].Text;
+            OrderStatusList.Items.FindByText(dgvOrders.Rows[e.NewSelectedIndex].Cells[7].Text);
+            btnUpdateStatus.Visible = true;
+           
         }
     }
 }

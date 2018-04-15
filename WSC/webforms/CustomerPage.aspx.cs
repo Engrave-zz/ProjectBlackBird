@@ -31,7 +31,7 @@ namespace WSC.webforms
             welcomelbl.Visible = false;
 
             // Upon postback refresh the list items.
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
                 ListItem SmallGoldPlaque = new ListItem("Small Gold Plaque", "1");
                 ListItem Visor = new ListItem("Visor", "2");
@@ -65,12 +65,12 @@ namespace WSC.webforms
                 Logoutbtn.Visible = true;
 
                 // if the user is not a customer, they will be redirected to the login page
-                if (!(strRole == "Customer" ))
+                if (!(strRole == "Customer"))
                 {
                     Session.Clear();
                     Response.Redirect("Login.aspx");
                 }
-                
+
                 // getting the ItemName from homepage
                 if (Session["ItemName"] != null)
                 {
@@ -111,8 +111,8 @@ namespace WSC.webforms
             CatelogItem = _businessObjects.GetCatalogItemByItemName(ItemName);
             lblItemCost.Text = "Cost: " + CatelogItem.ItemCost.ToString();
             string InstriptionTypes = CatelogItem.InscriptionType.ToString();
-            lblInscriptionType.Text = "Inscryption Type: " + InstriptionTypes;           
-    
+            lblInscriptionType.Text = "Inscryption Type: " + InstriptionTypes;
+
         }
 
         // this event is triggered when the order button is clicked on the customer page.
@@ -135,15 +135,15 @@ namespace WSC.webforms
             CatelogItem = _businessObjects.GetCatalogItemByItemName(ItemName);
             Customer = _businessObjects.GetCustomerByLastName(strLastName);
             Customer ActualCustomer = new Customer();
-            foreach(Customer Cust in Customer)
+            foreach (Customer Cust in Customer)
             {
-                if(Cust.PersonType.ToString() == "Customer")
+                if (Cust.PersonType.ToString() == "Customer")
                 {
                     ActualCustomer = Cust;
                 }
             }
             lastnamelbl.Text = ActualCustomer.PersonType.ToString();
-            
+
 
             // fill new item object with data
             newItem.CatalogItem = CatelogItem;

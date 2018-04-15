@@ -114,7 +114,7 @@
                         <div class="col-md-6 col-sm-6">
 							<div class="form-group">
                                 <asp:label CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" runat="server"><h3>My Orders</h3></asp:label>
-                                <asp:GridView runat="server" ID="dgvOrders" Visible="true" AutoGenerateColumns="true" ForeColor="White"></asp:GridView>
+                                <asp:GridView runat="server" ID="dgvOrders" onsVisible="true" AutoGenerateColumns="true" ForeColor="White"></asp:GridView>
                                 <asp:Button runat="server" ID="Refresh" CssClass="btn btn-default btn-block" OnClick="Refresh_Click" Text="Refresh"/>
 
 							</div>
