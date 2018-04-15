@@ -71,7 +71,7 @@
 					</div>
 					<div class="col-md-6 col-xs-6 social-icons">
 						<ul class="gtco-social-top">
-							<li><a href="Login.aspx"><i><asp:Label runat="server" ID="LoginLbl">Login</asp:Label></i></a></li>
+							<li><a href="Login.aspx"><i><asp:Label Visible="false" runat="server" ID="LoginLbl">Login</asp:Label></i></a></li>
                             <li><i><asp:Label runat="server" ID="welcomelbl" Visible="false"></asp:Label></i></></li>
                             <li><i><asp:Button ID="Logoutbtn" OnClick="Logoutbtn_Click" CssClass="btn btn-primary" runat="server" Text="Logout" Visible="true"/></i></></li>
 						</ul>
@@ -86,18 +86,6 @@
 					<div class="col-xs-12 text-center menu-1">
 						<ul>
 							<li class="active"><a href="Home.aspx">Home</a></li>
-							<li class="has-dropdown">
-								<a href="services.html">Services</a>
-								<ul class="dropdown">
-									<li><a href="#">Branding</a></li>
-									<li><a href="#">Development</a></li>
-									<li><a href="#">Web Design</a></li>
-									<li><a href="#">Marketing</a></li>
-								</ul>
-							</li>
-							<li><a href="portfolio.html">Portfolio</a></li>
-							<li><a href="blog.html">Blog</a></li>
-							<li><a href="contact.html">Contact</a></li>
                             <li><asp:Button ID="btnCustomerArea" OnClick="btnCustomerArea_Click" CssClass="btn btn-primary" runat="server" Text="Customer Area" Visible="false"/></li>
 						</ul>
 					</div>
@@ -112,9 +100,9 @@
 		<div class="gtco-container">
 			<div class="row row-mt-15em">
 				<div class="col-md-12 mt-text text-center animate-box" data-animate-effect="fadeInUp">
-					<h1>We Build <strong>Branded Platforms</strong></h1>	
-					<h2>Far far away, behind the word mountains, far from the countries Vokalia.</h2>
-					<div class="text-center"><a href="https://vimeo.com/channels/staffpicks/93951774" class="btn btn-primary btn-lg popup-vimeo">Watch the video</a></div>
+					<h1>We are a<strong> Printing & Engraving Company</strong></h1>	
+					<h2>Far far away, behind the mountains on the hills of valhala.</h2>
+					<div class="text-center"><a href="Login.aspx" class="btn btn-primary">Login Here</a></div>
 				</div>
 			</div>
 		</div>
@@ -126,26 +114,10 @@
 
 				<div class="row row-pb-sm">
 					<div class="col-md-12">
-					<h2>Creative Minds</h2>
+					<h2>Printing Is our Business</h2>
 					
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae accusamus, fugiat ut! Ducimus accusamus, quos. Esse ea iste, expedita atque quod quo maxime, saepe! Architecto unde aliquid atque excepturi dolores dolore fugit rem recusandae amet a, molestiae et! Dolore, laborum?</p>
-					<p>Quaerat quisquam quasi minima at molestias porro accusantium qui atque doloremque ab, odio tempora obcaecati cumque veritatis quo, assumenda nihil dolor optio enim fugit accusamus laborum. Autem neque dignissimos, corrupti, fugiat labore nisi illo, delectus, alias natus optio distinctio culpa!</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-6">
-						<ul class="check-li">
-							<li>Quaerat quisquam quasi</li>
-							<li>Accusantium qui atque doloremque</li>
-							<li>Expedita atque quod</li>
-						</ul>
-					</div>
-					<div class="col-md-6">
-						<ul class="check-li">
-							<li>Quaerat quisquam quasi</li>
-							<li>Accusantium qui atque doloremque</li>
-							<li>Expedita atque quod</li>
-						</ul>
+					<p>WSC Printing and Engraving has serviced professional, service firms and companies of all sizes for their printing needs. We have worked with mid-size companies as well as Fortune 500 organizations in Chicago, nationally and internationally.
+Our unique blend of printing and engraving capabilities, production expertise and creative problem solving will assist you in enhancing your brand while providing innovative & cost-efficient solutions for your purchasing and marketing departments.</p>
 					</div>
 				</div>
 			</div>
@@ -158,7 +130,7 @@
 		<div class="gtco-container text-center">
 			<div class="display-t">
 				<div class="display-tc">
-					<h1 class="animate-box">Never Stop Learning</h1>
+					<h1 class="animate-box">Experts in Practice</h1>
 				</div>	
 			</div>
 		</div>
@@ -171,28 +143,9 @@
 				<div class="row row-pb-sm">
 					<div class="col-md-12">
 						<h2>Expertise &amp; Beliefs</h2>
-						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae accusamus, fugiat ut! Ducimus accusamus, quos. Esse ea iste, expedita atque quod quo maxime, saepe! Architecto unde aliquid atque excepturi dolores dolore fugit rem recusandae amet a, molestiae et! Dolore, laborum?</p>
-						<p>Quaerat quisquam quasi minima at molestias porro accusantium qui atque doloremque ab, odio tempora obcaecati cumque veritatis quo, assumenda nihil dolor optio enim fugit accusamus laborum. Autem neque dignissimos, corrupti, fugiat labore nisi illo, delectus, alias natus optio distinctio culpa!</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-6">
-						<ul class="check-li">
-							<li>Quaerat quisquam quasi</li>
-							<li>Accusantium qui atque doloremque</li>
-							<li>Expedita atque quod</li>
-						</ul>
-					</div>
-					<div class="col-md-6">
-						<ul class="check-li">
-							<li>Quaerat quisquam quasi</li>
-							<li>Accusantium qui atque doloremque</li>
-							<li>Expedita atque quod</li>
-						</ul>
-					</div>
-				</div>
-				
+						<p>WSC Printing & Engraving has been a premier source for a variety of commercial and trade printing needs since 1921. Commercial offset printing, digital printing, raised printing, foil stamping, blind embossing, and engraving are services we offer to complete your projects. We offer a personalized online ordering system exclusively for your company that can be tailored specifically to your business needs. We can recommend the optimal stock for your project as well as the best process to enhance your design. Our Sales staff, customer service representatives, and production staff have high-quality control standards to ensure that your project will pass inspection before you receive it. We specialize in custom orders but can also handle large production orders with our varied services.</p>					
+                	</div>
+				</div>				
 			</div>
 		</div>
 		<div class="col-2 flex-img" style="background-image: url(../images/img_bg_2.jpg);"></div>
@@ -214,7 +167,7 @@
 			<div class="gtco-container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-						<h2>Services</h2>
+						<h2>Catelog</h2>
 						<p>We offer the best engraving and printing services available in the market! see our available products below.</p>
 					</div>
 				</div>
@@ -224,7 +177,7 @@
 						<a href="#" class="gtco-card-item">
 							<figure>
 								<div class="overlay"><i class="ti-plus"></i></div>
-								<img src="../images/img_1.jpg" alt="Image" class="img-responsive">
+								<img src="../images/visor.png" alt="Image" class="img-responsive">
 							</figure>
 							<div class="gtco-text">
 								<h2>Visor</h2>
@@ -237,11 +190,11 @@
 						<a href="#" class="gtco-card-item">
 							<figure>
 								<div class="overlay"><i class="ti-plus"></i></div>
-								<img src="../images/img_2.jpg" alt="Image" class="img-responsive">
+								<img src="../images/smallgoldplaque.png" alt="Image" class="img-responsive">
 							</figure>
 							<div class="gtco-text">
 								<h2>Small Gold Plaque</h2>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
+								<p>Gold Plaque, created by the Gods themselves.</p>
 								<p><asp:Button runat="server" CssClass="btn btn-primary" id="Small_Gold_Plaque" Text="Order Now" OnClick="btnAddToOrder_Click"/></p>
 							</div>
 						</a>
@@ -250,103 +203,20 @@
 						<a href="#" class="gtco-card-item">
 							<figure>
 								<div class="overlay"><i class="ti-plus"></i></div>
-								<img src="../images/img_3.jpg" alt="Image" class="img-responsive">
+								<img src="../images/smallsilverplaque.jpg" alt="Image" class="img-responsive">
 							</figure>
 							<div class="gtco-text">
-								<h2>Branding</h2>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-								<p><span class="btn btn-primary">Learn more</span></p>
+								<h2>Small Silver Plaque</h2>
+								<p>1 1/4 x 2 3/4 Oval Nickel Silver Plate</p>
+								<p><asp:Button runat="server" CssClass="btn btn-primary" id="Small_Silver_Plaque" Text="Order Now" OnClick="btnAddToOrder_Click"/></p>
 							</div>
 						</a>
 					</div>
-
-
-					<div class="col-lg-4 col-md-4 col-sm-6">
-						<a href="#" class="gtco-card-item">
-							<figure>
-								<div class="overlay"><i class="ti-plus"></i></div>
-								<img src="../images/img_1.jpg" alt="Image" class="img-responsive">
-							</figure>
-							<div class="gtco-text">
-								<h2>eCommerce Development</h2>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-								<p><span class="btn btn-primary">Learn more</span></p>
-							</div>
-						</a>
-					</div>
-
-					<div class="col-lg-4 col-md-4 col-sm-6">
-						<a href="#" class="gtco-card-item">
-							<figure>
-								<div class="overlay"><i class="ti-plus"></i></div>
-								<img src="../images/img_2.jpg" alt="Image" class="img-responsive">
-							</figure>
-							<div class="gtco-text">
-								<h2>Design &amp; UX</h2>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-								<p><span class="btn btn-primary">Learn more</span></p>
-							</div>
-						</a>
-					</div>
-
-					<div class="col-lg-4 col-md-4 col-sm-6">
-						<a href="#" class="gtco-card-item">
-							<figure>
-								<div class="overlay"><i class="ti-plus"></i></div>
-								<img src="../images/img_3.jpg" alt="Image" class="img-responsive">
-							</figure>
-							<div class="gtco-text">
-								<h2>Strategy</h2>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-								<p><span class="btn btn-primary">Learn more</span></p>
-							</div>
-						</a>
-					</div>
-
 				</div>
 			</div>
 		</div>
 		
 		<div id="gtco-features">
-			<div class="gtco-container">
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
-						<h2>How We Work</h2>
-						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4 col-sm-6">
-						<div class="feature-center animate-box" data-animate-effect="fadeIn">
-							<span class="icon">
-								<i>1</i>
-							</span>
-							<h3>Design</h3>
-							<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident.</p>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6">
-						<div class="feature-center animate-box" data-animate-effect="fadeIn">
-							<span class="icon">
-								<i>2</i>
-							</span>
-							<h3>Develop</h3>
-							<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident.</p>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6">
-						<div class="feature-center animate-box" data-animate-effect="fadeIn">
-							<span class="icon">
-								<i>3</i>
-							</span>
-							<h3>Launch</h3>
-							<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident.</p>
-						</div>
-					</div>
-					
-
-				</div>
-			</div>
 		</div>
 	</div>
 
@@ -368,7 +238,7 @@
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
 					<h2>Facts</h2>
-					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+					<p>At WSC we take pride in what we do and we have facts to back it up.</p>
 				</div>
 			</div>
 
@@ -396,7 +266,7 @@
 				<div class="col-md-3 col-sm-6 animate-box" data-animate-effect="fadeInUp">
 					<div class="feature-center">
 						<span class="counter js-counter" data-from="0" data-to="12202" data-speed="5000" data-refresh-interval="50">1</span>
-						<span class="counter-label">Line of codes</span>
+						<span class="counter-label">Printing & Engraving Jobs</span>
 
 					</div>
 				</div>
@@ -412,8 +282,7 @@
 				<div class="col-md-4">
 					<div class="gtco-widget">
 						<h3>About Us</h3>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore eos molestias quod sint ipsum possimus temporibus officia iste perspiciatis consectetur in fugiat.</p>
-						<p><a href="#">Learn more...</a></p>
+						<p>WSC Printing & Engraving. is proud to be an independent, third generation family owned business.  Located in Chicago’s thriving West Loop, Werner Printing & Engraving is one of Midwest’s leading manufacturers of printed and engraved materials.  If your project calls for offset printing, embossing, engraving or any of our other print processes, we handle in-house to maintain quality control.</p>
 					</div>
 				</div>
 
@@ -421,12 +290,9 @@
 					<div class="gtco-widget">
 						<h3>Services</h3>
 						<ul class="gtco-footer-links">
-							<li><a href="#">Data Analytics</a></li>
-							<li><a href="#">Web Development</a></li>
-							<li><a href="#">Branding &amp; Identity</a></li>
-							<li><a href="#">eCommerce Development</a></li>
-							<li><a href="#">Design &amp; UX</a></li>
-							<li><a href="#">Strategt</a></li>
+							<li>Printing</li>
+							<li>Engraving</li>
+							<li>Design</li>
 						</ul>
 					</div>
 				</div>
@@ -438,7 +304,7 @@
 						<h3>Get In Touch</h3>
 						<ul class="gtco-quick-contact">
 							<li><a href="#"><i class="icon-phone"></i> +1 234 567 890</a></li>
-							<li><a href="#"><i class="icon-mail2"></i> info@GetTemplates.co</a></li>
+							<li><a href="#"><i class="icon-mail2"></i> info@wsc.co</a></li>
 							<li><a href="#"><i class="icon-chat"></i> Live Chat</a></li>
 						</ul>
 					</div>

@@ -79,18 +79,6 @@
 					<div class="col-xs-12 text-center menu-1">
 						<ul>
 							<li class="active"><a href="Home.aspx">Home</a></li>
-							<li class="has-dropdown">
-								<a href="services.html">Services</a>
-								<ul class="dropdown">
-									<li><a href="#">Branding</a></li>
-									<li><a href="#">Development</a></li>
-									<li><a href="#">Web Design</a></li>
-									<li><a href="#">Marketing</a></li>
-								</ul>
-							</li>
-							<li><a href="portfolio.html">Portfolio</a></li>
-							<li><a href="blog.html">Blog</a></li>
-							<li><a href="contact.html">Contact</a></li>
 						</ul>
 					</div>
 				</div>
@@ -145,8 +133,14 @@
 				<div class="col-md-4">
 					<div class="gtco-widget">
 						<h3>About Us</h3>
+						<p>WSC Printing & Engraving. is proud to be an independent, third generation family owned business.  Located in Chicago’s thriving West Loop, Werner Printing & Engraving is one of Midwest’s leading manufacturers of printed and engraved materials.  If your project calls for offset printing, embossing, engraving or any of our other print processes, we handle in-house to maintain quality control.</p>
+					</div>
+				</div>
+
+								<div class="col-md-4">
+					<div class="gtco-widget">
+						<h3>About Us</h3>
 						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore eos molestias quod sint ipsum possimus temporibus officia iste perspiciatis consectetur in fugiat.</p>
-						<p><a href="#">Learn more...</a></p>
 					</div>
 				</div>
 
@@ -154,12 +148,9 @@
 					<div class="gtco-widget">
 						<h3>Services</h3>
 						<ul class="gtco-footer-links">
-							<li><a href="#">Data Analytics</a></li>
-							<li><a href="#">Web Development</a></li>
-							<li><a href="#">Branding &amp; Identity</a></li>
-							<li><a href="#">eCommerce Development</a></li>
-							<li><a href="#">Design &amp; UX</a></li>
-							<li><a href="#">Strategt</a></li>
+							<li>Printing</li>
+							<li>Engraving</li>
+							<li>Design</li>
 						</ul>
 					</div>
 				</div>
@@ -171,29 +162,11 @@
 						<h3>Get In Touch</h3>
 						<ul class="gtco-quick-contact">
 							<li><a href="#"><i class="icon-phone"></i> +1 234 567 890</a></li>
-							<li><a href="#"><i class="icon-mail2"></i> info@GetTemplates.co</a></li>
+							<li><a href="#"><i class="icon-mail2"></i> info@wsc.co</a></li>
 							<li><a href="#"><i class="icon-chat"></i> Live Chat</a></li>
 						</ul>
 					</div>
 				</div>
-
-			</div>
-
-			<div class="row copyright">
-				<div class="col-md-12">
-					<p class="pull-left">
-						<small class="block">Designed by Seal Team 7</small>
-					</p>
-					<p class="pull-right">
-						<ul class="gtco-social-icons pull-right">
-							<li><a href="#"><i class="icon-twitter"></i></a></li>
-							<li><a href="#"><i class="icon-facebook"></i></a></li>
-							<li><a href="#"><i class="icon-linkedin"></i></a></li>
-							<li><a href="#"><i class="icon-dribbble"></i></a></li>
-						</ul>
-					</p>
-				</div>
-			</div>
 
 		</div>
 	</footer>
