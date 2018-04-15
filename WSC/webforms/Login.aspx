@@ -168,13 +168,6 @@
 					</div>
 				</div>
 
-				<div class="col-md-4">
-					<div class="gtco-widget">
-						<h3>About Us</h3>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore eos molestias quod sint ipsum possimus temporibus officia iste perspiciatis consectetur in fugiat.</p>
-					</div>
-				</div>
-
 				<div class="col-md-4 col-md-push-1">
 					<div class="gtco-widget">
 						<h3>Services</h3>
