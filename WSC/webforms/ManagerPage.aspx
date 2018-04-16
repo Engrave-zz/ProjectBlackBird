@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ManagerPage.aspx.cs" Inherits="WSC.webforms.ManagerPage" %>
+﻿<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="ManagerPage.aspx.cs" Inherits="WSC.webforms.ManagerPage" %>
 
 <!DOCTYPE HTML>
 <html>

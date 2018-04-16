@@ -68,5 +68,3 @@ C:\Admin\Projects\projectblackbird\WSC\obj\Debug\WSC.dll
 C:\Admin\Projects\projectblackbird\WSC\obj\Debug\WSC.pdb
 C:\Admin\Projects\projectblackbird\WSC\obj\Debug\WSC.webforms.Properties.Resources.resources
 C:\Admin\Projects\projectblackbird\WSC\obj\Debug\WSC.csproj.GenerateResource.Cache
-C:\Admin\projects\ProjectBlackBird\WSC\obj\Debug\WSC.csproj.CoreCompileInputs.cache
-C:\Admin\projects\ProjectBlackBird\WSC\obj\Debug\WSC.csproj.CopyComplete
