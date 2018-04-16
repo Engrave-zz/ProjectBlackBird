@@ -24,6 +24,11 @@ namespace WSC.webforms
                 string strFirstName = ht.ContainsKey("FirstName") ? Convert.ToString(ht["FirstName"]) : "";
                 string strLastName = ht.ContainsKey("LastName") ? Convert.ToString(ht["LastName"]) : "";
                 // make visible the customer area button and welcome labels
+                if (strRole == "Employee")
+                {
+                    Session.Clear();
+                    Response.Redirect(Request.RawUrl);
+                }
                 LoginLbl.Visible = false;
                 welcomelbl.Text = "Welcome! " + strUserName;
                 welcomelbl.Visible = true;

@@ -91,7 +91,7 @@
 			<div class="row animate-box">
 				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
 					<h2>Welcome!</h2>
-					<p>You have arrived to the employee area, review customer orders and add new employees.</p>
+					<p>You have arrived to the employee area, review customer orders.</p>
                     <p><strong><asp:Label ID="lblError" ForeColor="White" CssClass="col-md-8 col-md-offset-2 text-center gtco-heading" runat="server" Visible="false"></asp:Label></strong></p>
 
                 </div>
